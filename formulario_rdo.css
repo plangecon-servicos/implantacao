@@ -1,0 +1,744 @@
+/* ==================================================
+   FORMULÁRIO RDO — FOLHA DE ESTILOS PRINCIPAL
+   Relatório Diário de Obras · Avaliação de Implantação
+   ================================================== */
+
+/* ---- Tipografia e Reset ---- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---- Variáveis de design (tokens) ---- */
+:root {
+  /* Cores principais */
+  --verde:        #0E633F;
+  --verde-light:  #16875A;
+  --verde-faint:  #E8F5EE;
+  --azul:         #2D559C;
+  --azul-light:   #3B6DC7;
+  --azul-faint:   #EBF0FA;
+
+  /* Neutros */
+  --cinza-bg:     #F2F4F7;
+  --cinza-borda:  #D1D5DB;
+  --cinza-texto:  #6B7280;
+  --cinza-escuro: #374151;
+  --branco:       #FFFFFF;
+
+  /* Estados */
+  --danger:       #DC2626;
+  --danger-faint: #FEF2F2;
+  --amarelo:      #D97706;
+  --amarelo-faint:#FFFBEB;
+
+  /* Utilitários */
+  --sombra:       0 2px 12px rgba(0,0,0,.08);
+  --sombra-lg:    0 8px 32px rgba(0,0,0,.12);
+  --radius:       10px;
+  --radius-sm:    6px;
+  --trans:        .2s ease;
+}
+
+/* ================================================== */
+/* BASE                                               */
+/* ================================================== */
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--cinza-bg);
+  color: var(--cinza-escuro);
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ================================================== */
+/* CABEÇALHO FIXO                                     */
+/* ================================================== */
+
+.header {
+  background: linear-gradient(135deg, var(--verde) 0%, #0a4e31 50%, var(--azul) 100%);
+  color: var(--branco);
+  padding: 28px 0 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0,0,0,.25);
+}
+
+.header-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.header-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(255,255,255,.18);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.header-title h1 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -.3px;
+}
+
+.header-title p {
+  font-size: .82rem;
+  opacity: .82;
+  margin-top: 2px;
+}
+
+/* ================================================== */
+/* BARRA DE PROGRESSO                                 */
+/* ================================================== */
+
+.progress-bar-wrap {
+  background: rgba(255,255,255,.18);
+  border-radius: 20px;
+  height: 8px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #5EE89A, #38D4A4);
+  border-radius: 20px;
+  transition: width .5s ease;
+  width: 0%;
+}
+
+.progress-label {
+  font-size: .78rem;
+  opacity: .88;
+  display: flex;
+  justify-content: space-between;
+}
+
+.progress-label span { font-weight: 700; }
+
+/* ================================================== */
+/* LAYOUT PRINCIPAL                                   */
+/* ================================================== */
+
+.container {
+  max-width: 900px;
+  margin: 32px auto 60px;
+  padding: 0 20px;
+}
+
+/* ================================================== */
+/* CARDS DE SEÇÃO                                     */
+/* ================================================== */
+
+.section-card {
+  background: var(--branco);
+  border-radius: var(--radius);
+  box-shadow: var(--sombra);
+  margin-bottom: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,.05);
+  animation: fadeUp .4s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--cinza-borda);
+  background: linear-gradient(90deg, var(--verde-faint), var(--branco) 60%);
+}
+
+.section-num {
+  width: 32px;
+  height: 32px;
+  background: var(--verde);
+  color: var(--branco);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .78rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--verde);
+  letter-spacing: -.2px;
+}
+
+.section-subtitle {
+  font-size: .78rem;
+  color: var(--cinza-texto);
+  margin-top: 1px;
+}
+
+.section-body {
+  padding: 24px;
+}
+
+/* ================================================== */
+/* CAMPOS DE FORMULÁRIO                               */
+/* ================================================== */
+
+.field-group {
+  margin-bottom: 20px;
+}
+
+.field-group:last-child { margin-bottom: 0; }
+
+label.field-label {
+  display: block;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--cinza-escuro);
+  margin-bottom: 6px;
+}
+
+label.field-label .req {
+  color: var(--danger);
+  margin-left: 2px;
+}
+
+input[type="text"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  border: 1.5px solid var(--cinza-borda);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-family: inherit;
+  font-size: .9rem;
+  color: var(--cinza-escuro);
+  background: var(--branco);
+  transition: border-color var(--trans), box-shadow var(--trans);
+  outline: none;
+  appearance: none;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--verde);
+  box-shadow: 0 0 0 3px rgba(14,99,63,.12);
+}
+
+input.error,
+select.error,
+textarea.error {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 3px rgba(220,38,38,.10);
+}
+
+textarea { resize: vertical; min-height: 90px; }
+
+/* Seta customizada para <select> */
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+/* Mensagem de erro inline */
+.field-error-msg {
+  color: var(--danger);
+  font-size: .75rem;
+  margin-top: 4px;
+  display: none;
+}
+
+.field-error-msg.visible { display: block; }
+
+/* ---- Dica de campo ---- */
+.field-hint {
+  font-size: .75rem;
+  color: var(--cinza-texto);
+  margin-top: 4px;
+}
+
+/* ================================================== */
+/* GRID DE COLUNAS                                    */
+/* ================================================== */
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 620px) {
+  .grid-2 { grid-template-columns: 1fr; }
+}
+
+/* ================================================== */
+/* TABELA DE STATUS DE IMPLANTAÇÃO (Seção 2)          */
+/* ================================================== */
+
+.status-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .85rem;
+}
+
+.status-table th {
+  background: var(--azul);
+  color: var(--branco);
+  font-weight: 600;
+  padding: 10px 14px;
+  text-align: left;
+}
+
+.status-table th:last-child { text-align: center; }
+
+.status-table tr:nth-child(even) td { background: var(--azul-faint); }
+
+.status-table td {
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--cinza-borda);
+  vertical-align: middle;
+}
+
+.status-table td.item-label {
+  font-weight: 500;
+  color: var(--cinza-escuro);
+}
+
+.status-table select {
+  font-size: .82rem;
+  padding: 6px 30px 6px 10px;
+}
+
+/* Responsivo — tabela em modo "stacked" no mobile */
+@media (max-width: 640px) {
+  .status-table thead { display: none; }
+  .status-table tr {
+    display: block;
+    border: 1px solid var(--cinza-borda);
+    border-radius: var(--radius-sm);
+    margin-bottom: 10px;
+    background: var(--branco) !important;
+  }
+  .status-table td {
+    display: block;
+    border: none;
+    padding: 6px 12px;
+  }
+  .status-table td.item-label { font-weight: 700; padding-bottom: 4px; }
+  .status-table td:last-child { padding-top: 2px; }
+}
+
+/* ================================================== */
+/* RADIO PILLS — Avaliação / Percepção Final          */
+/* ================================================== */
+
+.radio-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.radio-pills input[type="radio"] { display: none; }
+
+.radio-pills label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid var(--cinza-borda);
+  border-radius: 24px;
+  padding: 8px 18px;
+  cursor: pointer;
+  font-size: .85rem;
+  font-weight: 500;
+  transition: all var(--trans);
+  user-select: none;
+}
+
+/* Indicador circular embutido */
+.radio-pills label::before {
+  content: '';
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: all var(--trans);
+}
+
+/* Estado selecionado — variante verde (padrão) */
+.radio-pills input[type="radio"]:checked + label {
+  border-color: var(--verde);
+  background: var(--verde-faint);
+  color: var(--verde);
+}
+
+.radio-pills input[type="radio"]:checked + label::before {
+  background: var(--verde);
+  border-color: var(--verde);
+  box-shadow: inset 0 0 0 2px var(--branco);
+}
+
+/* Estado selecionado — variante azul */
+.radio-pills.azul input[type="radio"]:checked + label {
+  border-color: var(--azul);
+  background: var(--azul-faint);
+  color: var(--azul);
+}
+
+.radio-pills.azul input[type="radio"]:checked + label::before {
+  background: var(--azul);
+  border-color: var(--azul);
+  box-shadow: inset 0 0 0 2px var(--branco);
+}
+
+/* ================================================== */
+/* CHECKBOXES CUSTOMIZADOS (Strengths / Weaknesses)   */
+/* ================================================== */
+
+.check-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.check-item input[type="checkbox"] { display: none; }
+
+.check-item label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1.5px solid var(--cinza-borda);
+  border-radius: var(--radius-sm);
+  padding: 9px 14px;
+  cursor: pointer;
+  font-size: .83rem;
+  font-weight: 500;
+  transition: all var(--trans);
+  user-select: none;
+  min-height: 42px;
+}
+
+/* Caixa visual do checkbox */
+.check-item label .chk-box {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--cinza-borda);
+  border-radius: 4px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--trans);
+  font-size: 11px;
+  color: transparent;
+}
+
+/* Estado marcado */
+.check-item input[type="checkbox"]:checked + label {
+  border-color: var(--verde);
+  background: var(--verde-faint);
+  color: var(--verde);
+}
+
+.check-item input[type="checkbox"]:checked + label .chk-box {
+  background: var(--verde);
+  border-color: var(--verde);
+  color: var(--branco);
+}
+
+/* ================================================== */
+/* SELEÇÃO INLINE — Prioridade / Impacto (Seção 8)    */
+/* ================================================== */
+
+.inline-select-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.inline-select-row label {
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--cinza-escuro);
+  white-space: nowrap;
+}
+
+.inline-select-row select {
+  width: auto;
+  min-width: 130px;
+}
+
+/* ================================================== */
+/* BLOCO DINÂMICO — Necessidades do Cliente (Seção 8) */
+/* ================================================== */
+
+.necessidade-bloco {
+  border: 1.5px solid var(--cinza-borda);
+  border-radius: var(--radius-sm);
+  padding: 18px;
+  margin-bottom: 16px;
+  background: var(--cinza-bg);
+  position: relative;
+  animation: fadeUp .3s ease;
+}
+
+.necessidade-bloco .bloco-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.necessidade-bloco .bloco-num {
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--azul);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+/* Botão remover bloco */
+.btn-remove-bloco {
+  background: none;
+  border: 1px solid var(--cinza-borda);
+  border-radius: 6px;
+  color: var(--danger);
+  font-size: .78rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: all var(--trans);
+}
+
+.btn-remove-bloco:hover {
+  background: var(--danger-faint);
+  border-color: var(--danger);
+}
+
+/* ================================================== */
+/* BOTÃO ADICIONAR NECESSIDADE                        */
+/* ================================================== */
+
+.btn-add {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: 2px dashed var(--azul);
+  color: var(--azul);
+  border-radius: var(--radius-sm);
+  padding: 10px 18px;
+  font-size: .85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--trans);
+  margin-top: 4px;
+}
+
+.btn-add:hover {
+  background: var(--azul-faint);
+}
+
+/* ================================================== */
+/* BARRA DE AÇÕES E BOTÕES PRINCIPAIS                 */
+/* ================================================== */
+
+.action-bar {
+  background: var(--branco);
+  border-radius: var(--radius);
+  box-shadow: var(--sombra-lg);
+  padding: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  border: 1px solid rgba(0,0,0,.05);
+}
+
+/* Base de botão */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 13px 28px;
+  font-family: inherit;
+  font-size: .9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--trans);
+  letter-spacing: .2px;
+}
+
+/* Botão primário — Salvar (verde) */
+.btn-primary {
+  background: linear-gradient(135deg, var(--verde), var(--verde-light));
+  color: var(--branco);
+  box-shadow: 0 4px 14px rgba(14,99,63,.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(14,99,63,.4);
+}
+
+/* Botão secundário — Limpar (cinza) */
+.btn-secondary {
+  background: var(--cinza-bg);
+  color: var(--cinza-escuro);
+  border: 1.5px solid var(--cinza-borda);
+}
+
+.btn-secondary:hover {
+  background: #E5E7EB;
+  transform: translateY(-1px);
+}
+
+/* Botão de exportar — CSV (azul) */
+.btn-export {
+  background: linear-gradient(135deg, var(--azul), var(--azul-light));
+  color: var(--branco);
+  box-shadow: 0 4px 14px rgba(45,85,156,.3);
+}
+
+.btn-export:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(45,85,156,.4);
+}
+
+/* ================================================== */
+/* TOAST DE NOTIFICAÇÃO                               */
+/* ================================================== */
+
+#toast {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 999;
+  padding: 14px 22px;
+  border-radius: var(--radius);
+  font-size: .88rem;
+  font-weight: 600;
+  box-shadow: var(--sombra-lg);
+  display: none;
+  max-width: 360px;
+  animation: slideIn .35s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+#toast.success { background: var(--verde);   color: var(--branco); }
+#toast.error   { background: var(--danger);  color: var(--branco); }
+#toast.warning { background: var(--amarelo); color: var(--branco); }
+
+/* ================================================== */
+/* VALIDAÇÃO — Destaque de campo obrigatório vazio    */
+/* ================================================== */
+
+.required-highlight {
+  border-color: var(--danger) !important;
+  box-shadow: 0 0 0 3px rgba(220,38,38,.15) !important;
+}
+
+/* ================================================== */
+/* BADGES DE SEÇÃO                                    */
+/* ================================================== */
+
+.badge {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+.badge-verde { background: var(--verde-faint); color: var(--verde); }
+.badge-azul  { background: var(--azul-faint);  color: var(--azul);  }
+
+/* ================================================== */
+/* DIVIDER                                            */
+/* ================================================== */
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--cinza-borda);
+  margin: 20px 0;
+}
+
+/* ================================================== */
+/* BOTÃO SCROLL TO TOP                                */
+/* ================================================== */
+
+#scrollTop {
+  position: fixed;
+  bottom: 28px;
+  left: 28px;
+  width: 42px;
+  height: 42px;
+  background: var(--verde);
+  color: var(--branco);
+  border: none;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: var(--sombra);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--trans);
+  z-index: 90;
+}
+
+#scrollTop:hover  { background: var(--verde-light); transform: translateY(-2px); }
+#scrollTop.visible { display: flex; }
+
+/* ================================================== */
+/* RESPONSIVO GERAL                                   */
+/* ================================================== */
+
+@media (max-width: 600px) {
+  .header-title h1 { font-size: 1rem; }
+  .btn             { padding: 11px 18px; font-size: .82rem; }
+  .section-body    { padding: 16px; }
+}

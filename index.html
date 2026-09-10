@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulário de Avaliação — Implantação do Novo Modelo de RDO</title>
+  <meta name="description" content="Formulário corporativo para coleta de feedback sobre a implantação do novo modelo de Relatório Diário de Obras (RDO)." />
+<style>
+:root {
+  --verde: #0e633f;
+  --verde-2: #0b7148;
+  --verde-claro: #eaf6f0;
+  --azul: #2d559c;
+  --azul-2: #3e6fc1;
+  --azul-claro: #eef3fb;
+  --amarelo: #eabe32;
+  --amarelo-claro: #fff8d9;
+  --texto: #26364a;
+  --texto-suave: #6b7788;
+  --borda: #d8dee8;
+  --fundo: #f3f5f8;
+  --branco: #ffffff;
+  --vermelho: #c94141;
+  --sombra: 0 6px 18px rgba(36, 57, 83, .10);
+  --raio: 12px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: "Segoe UI", Inter, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+}
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: linear-gradient(110deg, #0d633f 0%, #126d48 42%, #2d559c 100%);
+  color: #fff;
+  box-shadow: 0 3px 12px rgba(14, 36, 63, .18);
+}
+.header-inner {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 18px 0 16px;
+}
+.header-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.header-icon {
+  width: 76px;
+  height: 44px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,.16);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.10);
+  font-size: 22px;
+  flex: 0 0 auto;
+}
+.header-title h1 {
+  margin: 0;
+  font-size: clamp(19px, 2.2vw, 26px);
+  line-height: 1.15;
+  font-weight: 750;
+  letter-spacing: -.25px;
+}
+.header-title p {
+  margin: 5px 0 0;
+  font-size: 12px;
+  opacity: .88;
+}
+.progress-bar-wrap {
+  height: 7px;
+  margin-top: 15px;
+  border-radius: 99px;
+  background: rgba(255,255,255,.24);
+  overflow: hidden;
+}
+.progress-bar-fill {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--amarelo), #fff2a8);
+  transition: width .25s ease;
+}
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  opacity: .95;
+}
+
+.container {
+  width: min(1120px, calc(100% - 32px));
+  margin: 26px auto 48px;
+}
+.section-card {
+  margin-bottom: 18px;
+  background: var(--branco);
+  border: 1px solid #e1e6ee;
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  overflow: hidden;
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 17px 20px;
+  background: linear-gradient(90deg, #edf8f2 0%, #f8fbff 100%);
+  border-bottom: 1px solid #dce5e1;
+}
+.section-num {
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  color: #fff;
+  background: var(--verde);
+  font-weight: 800;
+  font-size: 13px;
+  box-shadow: 0 2px 7px rgba(14,99,63,.22);
+}
+.section-title {
+  color: var(--verde);
+  font-size: 15px;
+  font-weight: 800;
+}
+.section-subtitle {
+  margin-top: 2px;
+  color: var(--texto-suave);
+  font-size: 11px;
+}
+.section-body { padding: 20px; }
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 18px 16px;
+}
+.field-group { margin-bottom: 14px; }
+.field-group:last-child { margin-bottom: 0; }
+.field-label {
+  display: block;
+  margin-bottom: 7px;
+  color: #455468;
+  font-size: 12px;
+  font-weight: 700;
+}
+.req { color: var(--vermelho); }
+input[type="text"], input[type="date"], select, textarea {
+  width: 100%;
+  border: 1px solid #cfd7e3;
+  border-radius: 7px;
+  background: #fff;
+  color: var(--texto);
+  outline: none;
+  transition: border-color .16s ease, box-shadow .16s ease, background .16s ease;
+}
+input[type="text"], input[type="date"], select {
+  height: 40px;
+  padding: 0 12px;
+}
+textarea {
+  min-height: 96px;
+  padding: 11px 12px;
+  resize: vertical;
+}
+input::placeholder, textarea::placeholder { color: #9aa5b5; }
+input:focus, select:focus, textarea:focus {
+  border-color: var(--azul-2);
+  box-shadow: 0 0 0 3px rgba(45,85,156,.11);
+}
+
+.status-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid #d9e1ed;
+  border-radius: 7px;
+}
+.status-table th {
+  padding: 10px 12px;
+  text-align: left;
+  color: #fff;
+  background: var(--azul);
+  font-size: 12px;
+  font-weight: 800;
+}
+.status-table td {
+  padding: 7px 12px;
+  border-top: 1px solid #d9e1ed;
+  font-size: 12px;
+}
+.status-table tbody tr:nth-child(even) td { background: var(--azul-claro); }
+.status-table tbody tr:nth-child(odd) td { background: #fff; }
+.status-table .item-label { font-weight: 600; color: #455468; }
+.status-table select { height: 35px; }
+
+.radio-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.radio-pills input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
+.radio-pills label {
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 12px;
+  border: 1px solid #d4dbe6;
+  border-radius: 8px;
+  background: #fff;
+  color: #4f5f74;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .15s ease;
+}
+.radio-pills label:hover { border-color: var(--azul-2); background: #f7f9fd; }
+.radio-pills input:checked + label {
+  border-color: var(--azul);
+  background: #eef3fb;
+  color: var(--azul);
+  box-shadow: inset 0 0 0 1px rgba(45,85,156,.08);
+}
+.chk-box {
+  width: 17px;
+  height: 17px;
+  border: 1px solid #c7cfdb;
+  border-radius: 4px;
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  background: #fff;
+  color: transparent;
+  font-size: 11px;
+  font-weight: 800;
+}
+.radio-pills label .chk-box {
+  border-radius: 50%;
+}
+.radio-pills input:checked + label .chk-box {
+  border-color: currentColor;
+  background: currentColor;
+  color: #fff;
+}
+.radio-pills.azul input:checked + label {
+  border-color: var(--azul);
+  background: #eef3fb;
+  color: var(--azul);
+}
+
+.check-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 9px 12px;
+}
+.check-item input[type="checkbox"] { position: absolute; opacity: 0; pointer-events: none; }
+.check-item label {
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 10px;
+  border: 1px solid #d6dde7;
+  border-radius: 8px;
+  background: #fff;
+  color: #4f5f74;
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: all .15s ease;
+}
+.check-item label:hover { border-color: var(--verde); background: #f6fbf8; }
+.check-item input:checked + label {
+  border-color: var(--verde);
+  background: var(--verde-claro);
+  color: var(--verde);
+}
+.check-item input:checked + label .chk-box {
+  border-color: var(--verde);
+  background: var(--verde);
+  color: #fff;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+  vertical-align: middle;
+}
+.badge-verde { color: var(--verde); background: var(--verde-claro); }
+.badge-azul { color: var(--azul); background: var(--azul-claro); }
+.divider { border: 0; border-top: 1px solid #e3e8ef; margin: 18px 0; }
+
+.necessidade-bloco {
+  padding: 15px;
+  margin-bottom: 12px;
+  background: linear-gradient(180deg, #fbfcfe 0%, #f7fafc 100%);
+  border: 1px solid #dfe5ee;
+  border-left: 4px solid var(--amarelo);
+  border-radius: 9px;
+}
+.bloco-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.bloco-num { color: var(--azul); font-size: 12px; font-weight: 800; }
+.inline-select-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  color: #556276;
+  font-size: 12px;
+  font-weight: 700;
+}
+.inline-select-row select { width: auto; min-width: 150px; }
+.btn-add {
+  width: 100%;
+  min-height: 42px;
+  border: 1px dashed #bfcada;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: var(--azul);
+  font-weight: 800;
+  transition: all .15s ease;
+}
+.btn-add:hover { border-color: var(--azul); background: var(--azul-claro); }
+.btn-remove-bloco {
+  border: 0;
+  background: transparent;
+  color: var(--vermelho);
+  font-size: 11px;
+  font-weight: 800;
+}
+.btn-remove-bloco:hover { text-decoration: underline; }
+
+.action-bar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 4px 0 16px;
+}
+.btn {
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 12px;
+  font-weight: 800;
+  transition: all .15s ease;
+}
+.btn-primary { background: var(--verde); color: #fff; }
+.btn-primary:hover { background: #0b5536; }
+.btn-secondary { background: #fff; color: #566377; border-color: #ccd5e1; }
+.btn-secondary:hover { background: #f6f8fb; }
+.btn-export { background: var(--amarelo); color: #2b2b2b; }
+.btn-export:hover { background: #d9aa28; }
+
+.field-error-msg {
+  display: none;
+  margin-top: 5px;
+  color: var(--vermelho);
+  font-size: 11px;
+  font-weight: 700;
+}
+.field-error-msg.visible { display: block; }
+.required-highlight {
+  border-color: var(--vermelho) !important;
+  box-shadow: 0 0 0 3px rgba(201,65,65,.10) !important;
+}
+
+#toast {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 100;
+  display: none;
+  max-width: 360px;
+  padding: 12px 15px;
+  border-radius: 9px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 750;
+  box-shadow: 0 10px 28px rgba(0,0,0,.18);
+}
+#toast.success { background: var(--verde); }
+#toast.warning { background: #9a6a00; }
+
+#scrollTop {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 40;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--azul);
+  color: #fff;
+  font-size: 20px;
+  line-height: 1;
+  box-shadow: 0 6px 16px rgba(45,85,156,.28);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: .18s ease;
+}
+#scrollTop.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+@media (max-width: 800px) {
+  .grid-2, .check-grid { grid-template-columns: 1fr; }
+  .container, .header-inner { width: min(100% - 20px, 1120px); }
+  .section-body { padding: 15px; }
+  .section-header { padding: 14px 15px; }
+  .action-bar { justify-content: stretch; }
+  .action-bar .btn { flex: 1 1 30%; }
+}
+
+@media (max-width: 560px) {
+  .header-inner { padding: 13px 0 12px; }
+  .header-title h1 { font-size: 18px; }
+  .header-title p { font-size: 10px; }
+  .status-table { font-size: 11px; }
+  .status-table th, .status-table td { padding: 7px 8px; }
+  .inline-select-row { align-items: flex-start; }
+  .inline-select-row select { width: 100%; min-width: 0; }
+  .action-bar .btn { flex-basis: 100%; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ================================================== -->
+<!-- CABEÇALHO FIXO COM BARRA DE PROGRESSO              -->
+<!-- ================================================== -->
+<header class="header" role="banner">
+  <div class="header-inner">
+    <div class="header-top">
+      <div class="header-icon"><img src="logo-plangecon.png" alt="PLANGECON" style="width:115%;height:115%;object-fit:contain;padding:2px;box-sizing:border-box;display:block;"></div>
+      <div class="header-title">
+        <h1>Implantação do Novo Sistema de RDO</h1>
+        <p>Relatório Diário de Obras · Formulário de Coleta de Percepção dos Contratos</p>
+      </div>
+    </div>
+    <div class="progress-bar-wrap" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso do preenchimento">
+      <div class="progress-bar-fill" id="progressFill"></div>
+    </div>
+    <div class="progress-label">
+      <span>Progresso do preenchimento</span>
+      <span id="progressPercent">0%</span>
+    </div>
+  </div>
+</header>
+
+<!-- ================================================== -->
+<!-- CONTEÚDO PRINCIPAL                                 -->
+<!-- ================================================== -->
+<main class="container" id="mainForm">
+<form id="rdoForm" novalidate autocomplete="off">
+
+  <!-- ================================================== -->
+  <!-- SEÇÃO 1 — IDENTIFICAÇÃO                            -->
+  <!-- ================================================== -->
+  <section class="section-card" id="sec1">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div>
+        <div class="section-title">Identificação</div>
+        <div class="section-subtitle">Dados do contrato e responsável pelo preenchimento</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="grid-2">
+        <div class="field-group">
+          <label class="field-label" for="contrato">Contrato / Obra <span class="req">*</span></label>
+          <input type="text" id="contrato" name="contrato" placeholder="Ex.: Contrato 2024-042 — Obra XYZ" required />
+          <div class="field-error-msg" id="err-contrato">Campo obrigatório.</div>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="responsavel">Responsável pelo preenchimento <span class="req">*</span></label>
+          <input type="text" id="responsavel" name="responsavel" placeholder="Nome completo" required />
+          <div class="field-error-msg" id="err-responsavel">Campo obrigatório.</div>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="dataPreenchimento">Data do preenchimento <span class="req">*</span></label>
+          <input type="date" id="dataPreenchimento" name="dataPreenchimento" required />
+          <div class="field-error-msg" id="err-dataPreenchimento">Campo obrigatório.</div>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="periodoAvaliacao">Período de avaliação <span class="req">*</span></label>
+          <input type="text" id="periodoAvaliacao" name="periodoAvaliacao" placeholder="Ex.: Jan/2025 – Jun/2025" required />
+          <div class="field-error-msg" id="err-periodoAvaliacao">Campo obrigatório.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- SEÇÃO 2 — STATUS DE IMPLANTAÇÃO                    -->
+  <!-- ================================================== -->
+  <section class="section-card" id="sec2">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div>
+        <div class="section-title">Status de Implantação</div>
+        <div class="section-subtitle">Avalie o estágio atual de cada elemento do novo RDO</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <table class="status-table" id="statusTable" aria-label="Tabela de status de implantação">
+        <thead>
+          <tr>
+            <th style="width:55%">Elemento</th>
+            <th>Status de Implantação</th>
+          </tr>
+        </thead>
+        <tbody id="statusBody">
+          <!-- Linhas geradas por JavaScript -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- SEÇÃO 3 — AVALIAÇÃO GERAL                          -->
+  <!-- ================================================== -->
+  <section class="section-card" id="sec3">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div>
+        <div class="section-title">Avaliação Geral</div>
+        <div class="section-subtitle">Percepção consolidada sobre a implantação</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="field-group">
+        <label class="field-label">Como você avalia a implantação do novo modelo de RDO no contrato? <span class="req">*</span></label>
+        <div class="radio-pills" id="avaliacaoGeral" role="radiogroup" aria-label="Avaliação geral">
+          <input type="radio" id="ag1" name="avaliacaoGeral" value="Muito satisfatória" />
+          <label for="ag1"><span class="chk-box" aria-hidden="true"></span>Muito satisfatória</label>
+          <input type="radio" id="ag2" name="avaliacaoGeral" value="Satisfatória" />
+          <label for="ag2"><span class="chk-box" aria-hidden="true"></span>Satisfatória</label>
+          <input type="radio" id="ag3" name="avaliacaoGeral" value="Parcialmente satisfatória" />
+          <label for="ag3"><span class="chk-box" aria-hidden="true"></span>Parcialmente satisfatória</label>
+          <input type="radio" id="ag4" name="avaliacaoGeral" value="Insatisfatória" />
+          <label for="ag4"><span class="chk-box" aria-hidden="true"></span>Insatisfatória</label>
+        </div>
+        <div class="field-error-msg" id="err-avaliacaoGeral">Selecione uma opção.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- SEÇÃO 4 — STRENGTHS / PONTOS FORTES                -->
+  <!-- ================================================== -->
+  <section class="section-card" id="sec4">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div>
+        <div class="section-title">Strengths — Pontos Fortes</div>
+        <div class="section-subtitle">Selecione os benefícios percebidos com a implantação</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="field-group">
+        <label class="field-label">Quais pontos fortes foram identificados? <span class="badge badge-verde">Múltipla escolha</span></label>
+        <div class="check-grid" id="strengthsGrid">
+          <!-- Checkboxes gerados por JavaScript -->
+        </div>
+      </div>
+      <hr class="divider" />
+      <div class="field-group">
+        <label class="field-label" for="strengthsDesc">Descreva os principais pontos fortes identificados.</label>
+        <textarea id="strengthsDesc" name="strengthsDesc" placeholder="Descreva com mais detalhes os pontos fortes observados no contrato..."></textarea>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- SEÇÃO 5 — WEAKNESSES / PONTOS FRACOS               -->
+  <!-- ================================================== -->
+  <section class="section-card" id="sec5">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <div>
+        <div class="section-title">Weaknesses — Pontos Fracos</div>
+        <div class="section-subtitle">Identifique as dificuldades e limitações encontradas</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="field-group">
+        <label class="field-label">Quais pontos fracos ou dificuldades foram identificados? <span class="badge badge-azul">Múltipla escolha</span></label>
+        <div class="check-grid" id="weaknessesGrid">
+          <!-- Checkboxes gerados por JavaScript -->
+        </div>
+      </div>
+      <hr class="divider" />
+      <div class="field-group">
+        <label class="field-label" for="weaknessesDesc">Descreva os principais pontos fracos ou dificuldades identificadas.</label>
+        <textarea id="weaknessesDesc" name="weaknessesDesc" placeholder="Descreva com mais detalhes as dificuldades encontradas no contrato..."></textarea>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- SEÇÃO 6 — O QUE ESTÁ FALTANDO?                     -->
+  <!-- ================================================== -->
+  <section class="section-card" id="sec6">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <div>
+        <div class="section-title">O que está faltando?</div>
+        <div class="section-subtitle">Gaps e lacunas do modelo atual em relação às necessidades do contrato</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="field-group">
+        <label class="field-label" for="oqueFaltando">O que está faltando no novo modelo de RDO para atender plenamente às necessidades do contrato? <span class="req">*</span></label>
+        <textarea id="oqueFaltando" name="oqueFaltando" placeholder="Descreva funcionalidades, campos, processos ou recursos ausentes..." required style="min-height:110px;"></textarea>
+        <div class="field-error-msg" id="err-oqueFaltando">Campo obrigatório.</div>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Prioridade <span class="req">*</span></label>
+        <div class="radio-pills azul" id="prioridadeFaltando" role="radiogroup" aria-label="Prioridade do que está faltando">
+          <input type="radio" id="pf1" name="prioridadeFaltando" value="Alta prioridade" />
+          <label for="pf1">🔴 Alta prioridade</label>
+          <input type="radio" id="pf2" name="prioridadeFaltando" value="Média prioridade" />
+          <label for="pf2">🟡 Média prioridade</label>
+          <input type="radio" id="pf3" name="prioridadeFaltando" value="Baixa prioridade" />
+          <label for="pf3">🟢 Baixa prioridade</label>
+        </div>
+        <div class="field-error-msg" id="err-prioridadeFaltando">Selecione uma prioridade.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- SEÇÃO 7 — O QUE PRECISA SER ALTERADO?              -->
+  <!-- ================================================== -->
+  <section class="section-card" id="sec7">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <div>
+        <div class="section-title">O que precisa ser alterado?</div>
+        <div class="section-subtitle">Aspectos do modelo que requerem ajustes ou simplificações</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="field-group">
+        <label class="field-label">Quais aspectos do novo modelo precisam ser ajustados? <span class="badge badge-verde">Múltipla escolha</span></label>
+        <div class="check-grid" id="alteracoesGrid">
+          <!-- Checkboxes gerados por JavaScript -->
+        </div>
+      </div>
+      <hr class="divider" />
+      <div class="field-group">
+        <label class="field-label" for="alteracoesDesc">Descreva o que precisa ser alterado.</label>
+        <textarea id="alteracoesDesc" name="alteracoesDesc" placeholder="Detalhe os ajustes, modificações ou simplificações necessárias..."></textarea>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- SEÇÃO 8 — PRINCIPAIS NECESSIDADES DO CLIENTE       -->
+  <!-- ================================================== -->
+  <section class="section-card" id="sec8">
+    <div class="section-header">
+      <div class="section-num">8</div>
+      <div>
+        <div class="section-title">Principais Necessidades do Cliente</div>
+        <div class="section-subtitle">Expectativas não atendidas pelo modelo atual de RDO</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <div id="necessidadesContainer">
+        <!-- Blocos de necessidade gerados dinamicamente -->
+      </div>
+      <button type="button" class="btn-add" id="btnAddNecessidade" onclick="adicionarNecessidade()">
+        <span aria-hidden="true">＋</span> Adicionar necessidade
+      </button>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- SEÇÃO 9 — RECOMENDAÇÃO DO CONTRATO                 -->
+  <!-- ================================================== -->
+  <section class="section-card" id="sec9">
+    <div class="section-header">
+      <div class="section-num">9</div>
+      <div>
+        <div class="section-title">Recomendação do Contrato</div>
+        <div class="section-subtitle">Principal indicação para a evolução do modelo de RDO</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="field-group">
+        <label class="field-label" for="recomendacao">Qual a principal recomendação do contrato para evolução do novo modelo de RDO? <span class="req">*</span></label>
+        <select id="recomendacao" name="recomendacao" required>
+          <option value="">— Selecione —</option>
+          <option value="Manter modelo atual">Manter modelo atual</option>
+          <option value="Realizar pequenos ajustes">Realizar pequenos ajustes</option>
+          <option value="Realizar revisão parcial">Realizar revisão parcial</option>
+          <option value="Realizar revisão estrutural">Realizar revisão estrutural</option>
+          <option value="Criar nova funcionalidade">Criar nova funcionalidade</option>
+          <option value="Melhorar treinamento">Melhorar treinamento</option>
+          <option value="Melhorar suporte técnico">Melhorar suporte técnico</option>
+          <option value="Outros">Outros</option>
+        </select>
+        <div class="field-error-msg" id="err-recomendacao">Selecione uma opção.</div>
+      </div>
+      <div class="field-group">
+        <label class="field-label" for="recomendacaoObs">Observações / recomendações.</label>
+        <textarea id="recomendacaoObs" name="recomendacaoObs" placeholder="Detalhe sua recomendação ou observação adicional..."></textarea>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- SEÇÃO 10 — PERCEPÇÃO FINAL                         -->
+  <!-- ================================================== -->
+  <section class="section-card" id="sec10">
+    <div class="section-header">
+      <div class="section-num">10</div>
+      <div>
+        <div class="section-title">Percepção Final</div>
+        <div class="section-subtitle">Visão geral sobre a efetividade do novo modelo de RDO</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="field-group">
+        <label class="field-label">Em uma visão geral, o novo modelo de RDO está atendendo às necessidades do contrato? <span class="req">*</span></label>
+        <div class="radio-pills" id="percepcaoFinal" role="radiogroup" aria-label="Percepção final">
+          <input type="radio" id="pf_sim" name="percepcaoFinal" value="Sim" />
+          <label for="pf_sim">✅ Sim</label>
+          <input type="radio" id="pf_parc" name="percepcaoFinal" value="Parcialmente" />
+          <label for="pf_parc">⚠️ Parcialmente</label>
+          <input type="radio" id="pf_nao" name="percepcaoFinal" value="Não" />
+          <label for="pf_nao">❌ Não</label>
+        </div>
+        <div class="field-error-msg" id="err-percepcaoFinal">Selecione uma opção.</div>
+      </div>
+      <div class="field-group">
+        <label class="field-label" for="percepcaoJustificativa">Justifique sua resposta. <span class="req">*</span></label>
+        <textarea id="percepcaoJustificativa" name="percepcaoJustificativa" placeholder="Elabore sua percepção final sobre o novo modelo de RDO..." required style="min-height:100px;"></textarea>
+        <div class="field-error-msg" id="err-percepcaoJustificativa">Campo obrigatório.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== -->
+  <!-- SEÇÃO 11 — BOTÕES DE AÇÃO                          -->
+  <!-- ================================================== -->
+  <div class="action-bar" id="sec11" role="region" aria-label="Ações do formulário">
+    <button type="button" class="btn btn-primary" id="btnSalvar" onclick="salvarFormulario()">
+      <span aria-hidden="true">💾</span> Salvar respostas
+    </button>
+    <button type="button" class="btn btn-secondary" id="btnLimpar" onclick="confirmarLimpar()">
+      <span aria-hidden="true">🔄</span> Limpar formulário
+    </button>
+    <button type="button" class="btn btn-export" id="btnExportar" onclick="exportarCSV()">
+      <span aria-hidden="true">📥</span> Exportar resultado
+    </button>
+  </div>
+
+</form>
+</main>
+
+<!-- Toast de notificação -->
+<div id="toast" role="alert" aria-live="assertive"></div>
+
+<!-- Botão de voltar ao topo -->
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Voltar ao topo" aria-label="Voltar ao topo">↑</button>
+
+<!-- ================================================== -->
+<!-- JAVASCRIPT PRINCIPAL                               -->
+<!-- ================================================== -->
+<script>
+  'use strict';
+
+  // ================================================== //
+  // DADOS ESTÁTICOS — listas de opções                 //
+  // ================================================== //
+
+  /** Itens da tabela de Status de Implantação (Seção 2) */
+  const STATUS_ITENS = [
+    'Cadastro de usuários',
+    'Cadastro de efetivo',
+    'Cadastro de equipamentos',
+    'Registro das atividades',
+    'Registro de ocorrências',
+    'Registro de apontamentos',
+    'Fluxo de aprovação',
+    'Anexos / evidências',
+    'Relatórios',
+    'Integrações',
+    'Utilização pela equipe',
+    'Utilização pelo cliente'
+  ];
+
+  /** Opções de status para cada item (Seção 2) */
+  const STATUS_OPCOES = [
+    'Não iniciado',
+    'Em implantação',
+    'Implantado',
+    'Estabilizado',
+    'Não aplicável'
+  ];
+
+  /** Pontos fortes (Seção 4) */
+  const STRENGTHS = [
+    'Maior padronização',
+    'Melhor qualidade das informações',
+    'Maior rastreabilidade',
+    'Redução de retrabalho',
+    'Maior agilidade',
+    'Melhor controle das atividades',
+    'Melhor acompanhamento gerencial',
+    'Melhor organização das informações',
+    'Integração com outros sistemas',
+    'Maior transparência',
+    'Outros'
+  ];
+
+  /** Pontos fracos (Seção 5) */
+  const WEAKNESSES = [
+    'Dificuldade de utilização',
+    'Falta de treinamento',
+    'Instabilidade do sistema',
+    'Lentidão',
+    'Problemas de acesso',
+    'Falta de funcionalidades',
+    'Campos inadequados',
+    'Campos insuficientes',
+    'Excesso de etapas',
+    'Problemas de integração',
+    'Problemas de usabilidade',
+    'Resistência dos usuários',
+    'Outros'
+  ];
+
+  /** Aspectos que precisam ser alterados (Seção 7) */
+  const ALTERACOES = [
+    'Processo',
+    'Formulário',
+    'Campos',
+    'Fluxo de aprovação',
+    'Sistema',
+    'Relatórios',
+    'Integrações',
+    'Permissões / acessos',
+    'Experiência do usuário',
+    'Outros'
+  ];
+
+  // ================================================== //
+  // INICIALIZAÇÃO DA PÁGINA                            //
+  // ================================================== //
+
+  document.addEventListener('DOMContentLoaded', () => {
+    renderizarTabelaStatus();
+    renderizarCheckboxes('strengthsGrid',  STRENGTHS,   'str');
+    renderizarCheckboxes('weaknessesGrid', WEAKNESSES,  'wkn');
+    renderizarCheckboxes('alteracoesGrid', ALTERACOES,  'alt');
+    adicionarNecessidade(false); // Inicia com 1 bloco de necessidade, sem rolar a tela
+    carregarRascunho();
+    configurarProgressoAutomatico();
+    configurarScrollTop();
+
+    // Preenche a data atual no campo de data
+    document.getElementById('dataPreenchimento').value = hoje();
+  });
+
+  /** Retorna a data de hoje no formato YYYY-MM-DD */
+  function hoje() {
+    return new Date().toISOString().split('T')[0];
+  }
+
+  // ================================================== //
+  // RENDERIZAÇÃO — Tabela de Status (Seção 2)          //
+  // ================================================== //
+
+  function renderizarTabelaStatus() {
+    const tbody = document.getElementById('statusBody');
+    STATUS_ITENS.forEach((item, i) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td class="item-label">${item}</td>
+        <td>
+          <select name="status_${i}" id="status_${i}" aria-label="Status: ${item}">
+            <option value="">— Selecione —</option>
+            ${STATUS_OPCOES.map(o => `<option value="${o}">${o}</option>`).join('')}
+          </select>
+        </td>`;
+      tbody.appendChild(tr);
+    });
+  }
+
+  // ================================================== //
+  // RENDERIZAÇÃO — Checkboxes genérico                 //
+  // ================================================== //
+
+  function renderizarCheckboxes(containerId, lista, prefixo) {
+    const container = document.getElementById(containerId);
+    lista.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'check-item';
+      const id = `${prefixo}_${i}`;
+      div.innerHTML = `
+        <input type="checkbox" id="${id}" name="${prefixo}" value="${item}" />
+        <label for="${id}">
+          <span class="chk-box" aria-hidden="true">✓</span>
+          ${item}
+        </label>`;
+      container.appendChild(div);
+    });
+  }
+
+  // ================================================== //
+  // SEÇÃO 8 — Necessidades do Cliente (dinâmico)       //
+  // ================================================== //
+
+  let contadorNecessidade = 0;
+
+  function adicionarNecessidade(rolar = true) {
+    contadorNecessidade++;
+    const container = document.getElementById('necessidadesContainer');
+    const bloco = document.createElement('div');
+    bloco.className = 'necessidade-bloco';
+    bloco.id = `nec_${contadorNecessidade}`;
+    bloco.innerHTML = `
+      <div class="bloco-header">
+        <span class="bloco-num">Necessidade ${contadorNecessidade}</span>
+        ${contadorNecessidade > 1
+          ? `<button type="button" class="btn-remove-bloco" onclick="removerNecessidade('nec_${contadorNecessidade}')" aria-label="Remover necessidade ${contadorNecessidade}">✕ Remover</button>`
+          : ''}
+      </div>
+      <div class="field-group">
+        <label class="field-label" for="nec_desc_${contadorNecessidade}">Descrição da necessidade</label>
+        <textarea id="nec_desc_${contadorNecessidade}" name="nec_desc_${contadorNecessidade}"
+          placeholder="Descreva a necessidade ou expectativa do cliente que não está sendo atendida..."
+          style="min-height:80px;"></textarea>
+      </div>
+      <div class="inline-select-row">
+        <label for="nec_prio_${contadorNecessidade}">Prioridade:</label>
+        <select id="nec_prio_${contadorNecessidade}" name="nec_prio_${contadorNecessidade}" aria-label="Prioridade da necessidade ${contadorNecessidade}">
+          <option value="">— Selecione —</option>
+          <option value="Alta">🔴 Alta</option>
+          <option value="Média">🟡 Média</option>
+          <option value="Baixa">🟢 Baixa</option>
+        </select>
+        <label for="nec_imp_${contadorNecessidade}" style="margin-left:12px;">Impacto:</label>
+        <select id="nec_imp_${contadorNecessidade}" name="nec_imp_${contadorNecessidade}" aria-label="Impacto da necessidade ${contadorNecessidade}">
+          <option value="">— Selecione —</option>
+          <option value="Alto">Alto</option>
+          <option value="Médio">Médio</option>
+          <option value="Baixo">Baixo</option>
+        </select>
+      </div>`;
+    container.appendChild(bloco);
+    if (rolar) {
+      bloco.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    atualizarProgresso();
+  }
+
+  function removerNecessidade(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.style.animation = 'fadeUp .25s ease reverse';
+      setTimeout(() => el.remove(), 230);
+    }
+  }
+
+  // ================================================== //
+  // PROGRESSO AUTOMÁTICO                               //
+  // ================================================== //
+
+  function configurarProgressoAutomatico() {
+    document.getElementById('rdoForm').addEventListener('change', atualizarProgresso);
+    document.getElementById('rdoForm').addEventListener('input', atualizarProgresso);
+  }
+
+  function atualizarProgresso() {
+    const campos = {
+      obrigatorios: [
+        'contrato', 'responsavel', 'dataPreenchimento', 'periodoAvaliacao',
+        'oqueFaltando', 'recomendacao', 'percepcaoJustificativa'
+      ],
+      radios: ['avaliacaoGeral', 'prioridadeFaltando', 'percepcaoFinal'],
+      status: STATUS_ITENS.map((_, i) => `status_${i}`),
+      checks: ['str', 'wkn']
+    };
+
+    let total = 0, preenchidos = 0;
+
+    // Campos de texto/select obrigatórios
+    campos.obrigatorios.forEach(id => {
+      total++;
+      if ((document.getElementById(id)?.value || '').trim()) preenchidos++;
+    });
+
+    // Radios obrigatórios
+    campos.radios.forEach(name => {
+      total++;
+      if (document.querySelector(`input[name="${name}"]:checked`)) preenchidos++;
+    });
+
+    // Status (pelo menos metade preenchidos)
+    let statusPreenchidos = 0;
+    campos.status.forEach(id => {
+      if ((document.getElementById(id)?.value || '') !== '') statusPreenchidos++;
+    });
+    total += 3;
+    preenchidos += Math.round((statusPreenchidos / STATUS_ITENS.length) * 3);
+
+    // Checkboxes (pelo menos 1 de cada grupo)
+    campos.checks.forEach(name => {
+      total++;
+      if (document.querySelector(`input[name="${name}"]:checked`)) preenchidos++;
+    });
+
+    const pct = Math.min(100, Math.round((preenchidos / total) * 100));
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressPercent').textContent = pct + '%';
+    document.querySelector('.progress-bar-wrap').setAttribute('aria-valuenow', pct);
+  }
+
+  // ================================================== //
+  // SCROLL TO TOP                                      //
+  // ================================================== //
+
+  function configurarScrollTop() {
+    const btn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      btn.classList.toggle('visible', window.scrollY > 400);
+    });
+  }
+
+  // ================================================== //
+  // VALIDAÇÃO DO FORMULÁRIO                            //
+  // ================================================== //
+
+  /**
+   * Valida campos obrigatórios e retorna true se tudo estiver OK.
+   * Destaca campos com problema e exibe mensagens de erro.
+   */
+  function validarFormulario() {
+    let valido = true;
+
+    // Helper: valida campo de texto/select
+    function validarCampo(id) {
+      const el = document.getElementById(id);
+      const errEl = document.getElementById(`err-${id}`);
+      const ok = (el?.value || '').trim() !== '';
+      if (!ok) {
+        el?.classList.add('required-highlight');
+        errEl?.classList.add('visible');
+      } else {
+        el?.classList.remove('required-highlight');
+        errEl?.classList.remove('visible');
+      }
+      return ok;
+    }
+
+    // Helper: valida grupo de radio
+    function validarRadio(name) {
+      const errEl = document.getElementById(`err-${name}`);
+      const selecionado = !!document.querySelector(`input[name="${name}"]:checked`);
+      if (!selecionado) {
+        errEl?.classList.add('visible');
+      } else {
+        errEl?.classList.remove('visible');
+      }
+      return selecionado;
+    }
+
+    // Campos de texto obrigatórios
+    ['contrato', 'responsavel', 'dataPreenchimento', 'periodoAvaliacao',
+     'oqueFaltando', 'percepcaoJustificativa'].forEach(id => {
+      if (!validarCampo(id)) valido = false;
+    });
+
+    // Selects obrigatórios
+    ['recomendacao'].forEach(id => {
+      if (!validarCampo(id)) valido = false;
+    });
+
+    // Radios obrigatórios
+    ['avaliacaoGeral', 'prioridadeFaltando', 'percepcaoFinal'].forEach(name => {
+      if (!validarRadio(name)) valido = false;
+    });
+
+    return valido;
+  }
+
+  // ================================================== //
+  // COLETAR DADOS DO FORMULÁRIO                        //
+  // ================================================== //
+
+  /** Coleta todos os dados preenchidos e retorna um objeto estruturado */
+  function coletarDados() {
+    // Identificação
+    const contrato          = document.getElementById('contrato')?.value.trim() || '';
+    const responsavel       = document.getElementById('responsavel')?.value.trim() || '';
+    const dataPreenchimento = document.getElementById('dataPreenchimento')?.value || '';
+    const periodoAvaliacao  = document.getElementById('periodoAvaliacao')?.value.trim() || '';
+
+    // Status de implantação — constrói texto "Item: Status; ..."
+    const statusArr = STATUS_ITENS.map((item, i) => {
+      const val = document.getElementById(`status_${i}`)?.value || 'Não informado';
+      return `${item}: ${val}`;
+    });
+    const statusImplantacao = statusArr.join(' | ');
+
+    // Avaliação geral
+    const avaliacaoGeral = document.querySelector('input[name="avaliacaoGeral"]:checked')?.value || '';
+
+    // Strengths — checkboxes marcados
+    const strengthsSel = [...document.querySelectorAll('input[name="str"]:checked')].map(e => e.value).join('; ');
+    const strengthsDesc = document.getElementById('strengthsDesc')?.value.trim() || '';
+    const strengths = [strengthsSel, strengthsDesc].filter(Boolean).join(' | Desc: ');
+
+    // Weaknesses — checkboxes marcados
+    const weaknessesSel = [...document.querySelectorAll('input[name="wkn"]:checked')].map(e => e.value).join('; ');
+    const weaknessesDesc = document.getElementById('weaknessesDesc')?.value.trim() || '';
+    const weaknesses = [weaknessesSel, weaknessesDesc].filter(Boolean).join(' | Desc: ');
+
+    // O que está faltando
+    const oqueFaltando       = document.getElementById('oqueFaltando')?.value.trim() || '';
+    const prioridadeFaltando = document.querySelector('input[name="prioridadeFaltando"]:checked')?.value || '';
+
+    // O que precisa ser alterado
+    const alteracoesSel  = [...document.querySelectorAll('input[name="alt"]:checked')].map(e => e.value).join('; ');
+    const alteracoesDesc = document.getElementById('alteracoesDesc')?.value.trim() || '';
+    const oqueAlterar    = [alteracoesSel, alteracoesDesc].filter(Boolean).join(' | Desc: ');
+
+    // Necessidades do cliente — coleta todos os blocos
+    const necessidades = [];
+    document.querySelectorAll('[id^="nec_"]:not([id^="nec_desc"]):not([id^="nec_prio"]):not([id^="nec_imp"])').forEach(bloco => {
+      if (!bloco.classList.contains('necessidade-bloco')) return;
+      const idNum  = bloco.id.replace('nec_', '');
+      const desc   = document.getElementById(`nec_desc_${idNum}`)?.value.trim() || '';
+      const prio   = document.getElementById(`nec_prio_${idNum}`)?.value || '';
+      const imp    = document.getElementById(`nec_imp_${idNum}`)?.value || '';
+      if (desc || prio || imp) {
+        necessidades.push({ desc, prio, imp });
+      }
+    });
+
+    // Recomendação
+    const recomendacao    = document.getElementById('recomendacao')?.value || '';
+    const recomendacaoObs = document.getElementById('recomendacaoObs')?.value.trim() || '';
+
+    // Percepção final
+    const percepcaoFinal          = document.querySelector('input[name="percepcaoFinal"]:checked')?.value || '';
+    const percepcaoJustificativa  = document.getElementById('percepcaoJustificativa')?.value.trim() || '';
+
+    return {
+      contrato, responsavel, dataPreenchimento, periodoAvaliacao,
+      statusImplantacao, avaliacaoGeral, strengths, weaknesses,
+      oqueFaltando, prioridadeFaltando, oqueAlterar,
+      necessidades, recomendacao, recomendacaoObs,
+      percepcaoFinal, percepcaoJustificativa
+    };
+  }
+
+  // ================================================== //
+  // SALVAR RASCUNHO (LocalStorage)                     //
+  // ================================================== //
+
+  function salvarFormulario() {
+    if (!validarFormulario()) {
+      exibirToast('⚠️ Verifique os campos obrigatórios destacados.', 'warning');
+      // Rola para o primeiro campo com erro
+      const primeiroErro = document.querySelector('.required-highlight, input[required]:invalid');
+      primeiroErro?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    const dados = coletarDados();
+    localStorage.setItem('rdo_rascunho', JSON.stringify(dados));
+    exibirToast('✅ Formulário salvo com sucesso!', 'success');
+    atualizarProgresso();
+  }
+
+  /** Carrega rascunho salvo do localStorage (apenas campos simples) */
+  function carregarRascunho() {
+    const raw = localStorage.getItem('rdo_rascunho');
+    if (!raw) return;
+    try {
+      // Não auto-preenche ao carregar para evitar confusão; apenas avisa
+      // Comportamento intencional: o usuário começa do zero cada sessão
+    } catch (e) { /* ignorar */ }
+  }
+
+  // ================================================== //
+  // LIMPAR FORMULÁRIO                                  //
+  // ================================================== //
+
+  function confirmarLimpar() {
+    if (confirm('Tem certeza que deseja limpar todos os campos do formulário?\nEsta ação não pode ser desfeita.')) {
+      limparFormulario();
+    }
+  }
+
+  function limparFormulario() {
+    document.getElementById('rdoForm').reset();
+
+    // Remove blocos de necessidade e recria um
+    const container = document.getElementById('necessidadesContainer');
+    container.innerHTML = '';
+    contadorNecessidade = 0;
+    adicionarNecessidade(false);
+
+    // Remove highlights de erro
+    document.querySelectorAll('.required-highlight').forEach(el => el.classList.remove('required-highlight'));
+    document.querySelectorAll('.field-error-msg.visible').forEach(el => el.classList.remove('visible'));
+
+    // Repõe data atual
+    document.getElementById('dataPreenchimento').value = hoje();
+
+    localStorage.removeItem('rdo_rascunho');
+    atualizarProgresso();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    exibirToast('🔄 Formulário limpo.', 'warning');
+  }
+
+  // ================================================== //
+  // EXPORTAR CSV                                       //
+  // ================================================== //
+
+  /**
+   * Gera e faz download de um arquivo CSV estruturado com todas as
+   * respostas do formulário, incluindo uma linha por necessidade do cliente
+   * quando houver múltiplas.
+   */
+  function exportarCSV() {
+    if (!validarFormulario()) {
+      exibirToast('⚠️ Preencha todos os campos obrigatórios antes de exportar.', 'warning');
+      document.querySelector('.required-highlight, input[required]:invalid')
+              ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    const d = coletarDados();
+
+    // Cabeçalho do CSV (conforme Seção 12 do briefing)
+    const cabecalho = [
+      'Contrato',
+      'Responsável',
+      'Data',
+      'Período',
+      'Status de Implantação',
+      'Avaliação Geral',
+      'Strengths',
+      'Weaknesses',
+      'O que está faltando',
+      'Prioridade (Faltando)',
+      'O que precisa ser alterado',
+      'Necessidades do Cliente',
+      'Prioridade (Necessidade)',
+      'Impacto',
+      'Recomendação',
+      'Observações (Recomendação)',
+      'Percepção Final',
+      'Justificativa (Percepção Final)'
+    ];
+
+    // Linhas de dados — uma por necessidade, ou pelo menos uma linha
+    const linhasNecessidade = d.necessidades.length > 0
+      ? d.necessidades
+      : [{ desc: '', prio: '', imp: '' }];
+
+    const linhas = linhasNecessidade.map((nec, idx) => [
+      idx === 0 ? d.contrato            : '',
+      idx === 0 ? d.responsavel         : '',
+      idx === 0 ? formatarData(d.dataPreenchimento) : '',
+      idx === 0 ? d.periodoAvaliacao    : '',
+      idx === 0 ? d.statusImplantacao   : '',
+      idx === 0 ? d.avaliacaoGeral      : '',
+      idx === 0 ? d.strengths           : '',
+      idx === 0 ? d.weaknesses          : '',
+      idx === 0 ? d.oqueFaltando        : '',
+      idx === 0 ? d.prioridadeFaltando  : '',
+      idx === 0 ? d.oqueAlterar         : '',
+      nec.desc,
+      nec.prio,
+      nec.imp,
+      idx === 0 ? d.recomendacao        : '',
+      idx === 0 ? d.recomendacaoObs     : '',
+      idx === 0 ? d.percepcaoFinal      : '',
+      idx === 0 ? d.percepcaoJustificativa : ''
+    ]);
+
+    const csvContent = [cabecalho, ...linhas]
+      .map(linha => linha.map(cell => escaparCSV(String(cell))).join(';'))
+      .join('\r\n');
+
+    // Adiciona BOM para compatibilidade com Excel (acentos)
+    const bom = '\uFEFF';
+    const blob = new Blob([bom + csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url  = URL.createObjectURL(blob);
+
+    const nomeArquivo = `RDO_Avaliacao_${slugify(d.contrato || 'Contrato')}_${d.dataPreenchimento || hoje()}.csv`;
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = nomeArquivo;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    exibirToast('📥 Dados exportados com sucesso!', 'success');
+  }
+
+  /** Escapa valores para CSV: envolve em aspas duplas e escapa aspas internas */
+  function escaparCSV(val) {
+    if (val.includes(';') || val.includes('"') || val.includes('\n') || val.includes('\r')) {
+      return `"${val.replace(/"/g, '""')}"`;
+    }
+    return val;
+  }
+
+  /** Formata data YYYY-MM-DD para DD/MM/YYYY */
+  function formatarData(data) {
+    if (!data) return '';
+    const [y, m, d] = data.split('-');
+    return `${d}/${m}/${y}`;
+  }
+
+  /** Converte string para slug simples (para nome de arquivo) */
+  function slugify(str) {
+    return str
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-zA-Z0-9]+/g, '_')
+      .replace(/^_+|_+$/g, '')
+      .substring(0, 40);
+  }
+
+  // ================================================== //
+  // TOAST DE NOTIFICAÇÃO                               //
+  // ================================================== //
+
+  let toastTimeout = null;
+
+  function exibirToast(mensagem, tipo = 'success') {
+    const toast = document.getElementById('toast');
+    toast.textContent = mensagem;
+    toast.className = tipo;
+    toast.style.display = 'block';
+
+    if (toastTimeout) clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => {
+      toast.style.display = 'none';
+    }, 4000);
+  }
+
+</script>
+
+</body>
+</html>
