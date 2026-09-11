@@ -21,7 +21,7 @@
   --fundo: #f3f5f8;
   --branco: #ffffff;
   --vermelho: #c94141;
-  --sombra: 0 6px 18px rgba(36, 57, 83, .10);
+  --sombra: 0 6px 18px rgba(40, 60, 90, .20);
   --raio: 12px;
 }
 
@@ -654,11 +654,11 @@ input:focus, select:focus, textarea:focus {
         <label class="field-label">Prioridade <span class="req">*</span></label>
         <div class="radio-pills azul" id="prioridadeFaltando" role="radiogroup" aria-label="Prioridade do que está faltando">
           <input type="radio" id="pf1" name="prioridadeFaltando" value="Alta prioridade" />
-          <label for="pf1">🔴 Alta prioridade</label>
+          <label for="pf1"> Alta prioridade</label>
           <input type="radio" id="pf2" name="prioridadeFaltando" value="Média prioridade" />
-          <label for="pf2">🟡 Média prioridade</label>
+          <label for="pf2"> Média prioridade</label>
           <input type="radio" id="pf3" name="prioridadeFaltando" value="Baixa prioridade" />
-          <label for="pf3">🟢 Baixa prioridade</label>
+          <label for="pf3"> Baixa prioridade</label>
         </div>
         <div class="field-error-msg" id="err-prioridadeFaltando">Selecione uma prioridade.</div>
       </div>
@@ -762,11 +762,11 @@ input:focus, select:focus, textarea:focus {
         <label class="field-label">Em uma visão geral, o novo modelo de RDO está atendendo às necessidades do contrato? <span class="req">*</span></label>
         <div class="radio-pills" id="percepcaoFinal" role="radiogroup" aria-label="Percepção final">
           <input type="radio" id="pf_sim" name="percepcaoFinal" value="Sim" />
-          <label for="pf_sim">✅ Sim</label>
+          <label for="pf_sim"> Sim</label>
           <input type="radio" id="pf_parc" name="percepcaoFinal" value="Parcialmente" />
-          <label for="pf_parc">⚠️ Parcialmente</label>
+          <label for="pf_parc"> Parcialmente</label>
           <input type="radio" id="pf_nao" name="percepcaoFinal" value="Não" />
-          <label for="pf_nao">❌ Não</label>
+          <label for="pf_nao"> Não</label>
         </div>
         <div class="field-error-msg" id="err-percepcaoFinal">Selecione uma opção.</div>
       </div>
@@ -783,13 +783,13 @@ input:focus, select:focus, textarea:focus {
   <!-- ================================================== -->
   <div class="action-bar" id="sec11" role="region" aria-label="Ações do formulário">
     <button type="button" class="btn btn-primary" id="btnSalvar" onclick="salvarFormulario()">
-      <span aria-hidden="true">💾</span> Salvar respostas
+      <span aria-hidden="true"></span> Salvar respostas
     </button>
     <button type="button" class="btn btn-secondary" id="btnLimpar" onclick="confirmarLimpar()">
-      <span aria-hidden="true">🔄</span> Limpar formulário
+      <span aria-hidden="true"></span> Limpar formulário
     </button>
     <button type="button" class="btn btn-export" id="btnExportar" onclick="exportarCSV()">
-      <span aria-hidden="true">📥</span> Exportar resultado
+      <span aria-hidden="true"></span> Exportar resultado
     </button>
   </div>
 
@@ -975,9 +975,9 @@ input:focus, select:focus, textarea:focus {
         <label for="nec_prio_${contadorNecessidade}">Prioridade:</label>
         <select id="nec_prio_${contadorNecessidade}" name="nec_prio_${contadorNecessidade}" aria-label="Prioridade da necessidade ${contadorNecessidade}">
           <option value="">— Selecione —</option>
-          <option value="Alta">🔴 Alta</option>
-          <option value="Média">🟡 Média</option>
-          <option value="Baixa">🟢 Baixa</option>
+          <option value="Alta"> Alta</option>
+          <option value="Média"> Média</option>
+          <option value="Baixa"> Baixa</option>
         </select>
         <label for="nec_imp_${contadorNecessidade}" style="margin-left:12px;">Impacto:</label>
         <select id="nec_imp_${contadorNecessidade}" name="nec_imp_${contadorNecessidade}" aria-label="Impacto da necessidade ${contadorNecessidade}">
@@ -1252,7 +1252,7 @@ input:focus, select:focus, textarea:focus {
     localStorage.removeItem('rdo_rascunho');
     atualizarProgresso();
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    exibirToast('🔄 Formulário limpo.', 'warning');
+    exibirToast(' Formulário limpo.', 'warning');
   }
 
   // ================================================== //
@@ -1266,7 +1266,7 @@ input:focus, select:focus, textarea:focus {
    */
   function exportarCSV() {
     if (!validarFormulario()) {
-      exibirToast('⚠️ Preencha todos os campos obrigatórios antes de exportar.', 'warning');
+      exibirToast(' Preencha todos os campos obrigatórios antes de exportar.', 'warning');
       document.querySelector('.required-highlight, input[required]:invalid')
               ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
@@ -1341,7 +1341,7 @@ input:focus, select:focus, textarea:focus {
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
 
-    exibirToast('📥 Dados exportados com sucesso!', 'success');
+    exibirToast(' Dados exportados com sucesso!', 'success');
   }
 
   /** Escapa valores para CSV: envolve em aspas duplas e escapa aspas internas */
