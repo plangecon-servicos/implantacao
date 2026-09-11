@@ -500,28 +500,86 @@ input:focus, select:focus, textarea:focus {
         <div class="section-subtitle">Dados do contrato e responsável pelo preenchimento</div>
       </div>
     </div>
+
     <div class="section-body">
       <div class="grid-2">
+
         <div class="field-group">
-          <label class="field-label" for="contrato">Contrato / Obra <span class="req">*</span></label>
-          <input type="text" id="contrato" name="contrato" placeholder="Ex.: Contrato 2024-042 — Obra XYZ" required />
-          <div class="field-error-msg" id="err-contrato">Campo obrigatório.</div>
+          <label class="field-label" for="contrato">
+            Contrato / Obra <span class="req">*</span>
+          </label>
+          <input
+            type="text"
+            id="contrato"
+            name="contrato"
+            placeholder="Ex.: Contrato 2024-042 — Obra XYZ"
+            required
+          />
+          <div class="field-error-msg" id="err-contrato">
+            Campo obrigatório.
+          </div>
         </div>
+
         <div class="field-group">
-          <label class="field-label" for="responsavel">Responsável pelo preenchimento <span class="req">*</span></label>
-          <input type="text" id="responsavel" name="responsavel" placeholder="Nome completo" required />
-          <div class="field-error-msg" id="err-responsavel">Campo obrigatório.</div>
+          <label class="field-label" for="responsavel">
+            Responsável pelo preenchimento <span class="req">*</span>
+          </label>
+          <input
+            type="text"
+            id="responsavel"
+            name="responsavel"
+            placeholder="Nome completo"
+            required
+          />
+          <div class="field-error-msg" id="err-responsavel">
+            Campo obrigatório.
+          </div>
         </div>
+
         <div class="field-group">
-          <label class="field-label" for="dataPreenchimento">Data do preenchimento <span class="req">*</span></label>
-          <input type="date" id="dataPreenchimento" name="dataPreenchimento" required />
-          <div class="field-error-msg" id="err-dataPreenchimento">Campo obrigatório.</div>
+          <label class="field-label" for="dataPreenchimento">
+            Data do preenchimento <span class="req">*</span>
+          </label>
+          <input
+            type="date"
+            id="dataPreenchimento"
+            name="dataPreenchimento"
+            required
+          />
+          <div class="field-error-msg" id="err-dataPreenchimento">
+            Campo obrigatório.
+          </div>
         </div>
+
         <div class="field-group">
-          <label class="field-label" for="periodoAvaliacao">Período de avaliação <span class="req">*</span></label>
-          <input type="text" id="periodoAvaliacao" name="periodoAvaliacao" placeholder="Ex.: Jan/2025 – Jun/2025" required />
-          <div class="field-error-msg" id="err-periodoAvaliacao">Campo obrigatório.</div>
+          <label class="field-label" for="periodoAvaliacao">
+            Período de avaliação <span class="req">*</span>
+          </label>
+
+          <select
+            id="periodoAvaliacao"
+            name="periodoAvaliacao"
+            required
+          >
+            <option value="">— Selecione o período —</option>
+            <option value="Jan/2026 - Fev/2026">Jan/2026 - Fev/2026</option>
+            <option value="Fev/2026 - Mar/2026">Fev/2026 - Mar/2026</option>
+            <option value="Mar/2026 - Abr/2026">Mar/2026 - Abr/2026</option>
+            <option value="Abr/2026 - Mai/2026">Abr/2026 - Mai/2026</option>
+            <option value="Mai/2026 - Jun/2026">Mai/2026 - Jun/2026</option>
+            <option value="Jun/2026 - Jul/2026">Jun/2026 - Jul/2026</option>
+            <option value="Jul/2026 - Ago/2026">Jul/2026 - Ago/2026</option>
+            <option value="Ago/2026 - Set/2026">Ago/2026 - Set/2026</option>
+            <option value="Set/2026 - Out/2026">Set/2026 - Out/2026</option>
+            <option value="Out/2026 - Nov/2026">Out/2026 - Nov/2026</option>
+            <option value="Nov/2026 - Dez/2026">Nov/2026 - Dez/2026</option>
+          </select>
+
+          <div class="field-error-msg" id="err-periodoAvaliacao">
+            Campo obrigatório.
+          </div>
         </div>
+
       </div>
     </div>
   </section>
