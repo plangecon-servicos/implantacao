@@ -120,17 +120,25 @@
     }
 
     .brand-logo-wrap {
-      width: 76px;
-      height: 44px;
-      border-radius: var(--radius-sm);
-      background: rgba(255, 255, 255, 0.16);
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
-      display: grid;
-      place-items: center;
-      padding: 3px;
+      width: 110px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
       flex-shrink: 0;
-      overflow: hidden;
+          overflow: visible;
+      background: transparent;
+      box-shadow: none;
+      border-radius: 0;
     }
+
+.brand-logo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
 
     .brand-logo-wrap img {
       width: 100%;
@@ -1577,7 +1585,7 @@
       </div>
       <div class="exec-banner-text">
         <h3>Pesquisa de Melhorias</h3>
-        <p>Preencha os campos abaixo considerando a realidade operacional do contrato, os resultados observados em campo e os impactos na Gestão de Mudança.</p>
+        <p>Preencha os campos abaixo considerando a realidade da implantação do mecanismo do contrato, os resultados observados em campo e os impactos na Gestão de Mudança.</p>
       </div>
     </div>
 
