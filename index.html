@@ -427,7 +427,9 @@
       margin-left: var(--sidebar-w);
       flex: 1;
       padding: 28px 36px 130px;
-      max-width: 960px;
+      width: calc(100% - var(--sidebar-w));
+      max-width: none;
+      box-sizing: border-box;
     }
 
     /* Cartão Executivo de Apresentação */
