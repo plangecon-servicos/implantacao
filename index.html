@@ -122,24 +122,17 @@
   .brand-logo-wrap {
     width: 110px;
     height: 52px;
-    background: rgba(255, 255, 255, 0.5);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
-    display: grid;
-    place-items: center;
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 3px;
     flex-shrink: 0;
     overflow: hidden;
-  
-  /* Chama a animação */
-    animation: formaOrganica 6s ease-in-out infinite;
-}
-
-/* Cria o movimento fluido */
-@keyframes formaOrganica {
-  0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-  50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
-  100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-}
+  }
 
 .brand-logo-wrap img {
   width: 100%;
