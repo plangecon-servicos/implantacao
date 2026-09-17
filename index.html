@@ -85,50 +85,7 @@
       background: none;
     }
 
-<!-- =====================================================
-     1. CABEÇALHO PRINCIPAL FIXO
-     ===================================================== -->
-<header class="header" role="banner">
-  <!-- Espaço que coincide com a largura da barra lateral -->
-  <div class="header-brand-slot">
-    <div class="brand-box">
-      <div class="brand-logo-wrap">
-        <img src="logo-plangecon.png" alt="PLANGECON"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-        <div class="brand-text-fallback" style="display:none;">PLANGECON</div>
-      </div>
-      <div class="brand-titles">
-        <h2>PLANGECON</h2>
-        <span>Planejamento e Controle</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Título principal e barra de progresso executiva -->
-  <div class="header-main">
-    <div class="header-titles">
-      <h1>Implantação do Novo Sistema de RDO</h1>
-      <p>Relatório Diário de Obras · Avaliação e Diagnóstico Estruturado dos Contratos</p>
-    </div>
-    
-    <div style="display: flex; align-items: center; gap: 14px;">
-      <a href="dashboard_rdo.html" class="btn-top-dashboard" style="display: inline-flex; align-items: center; gap: 7px; padding: 8px 15px; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.32); border-radius: 8px; color: #fff; font-size: 12px; font-weight: 800; text-decoration: none; transition: all 0.2s ease; white-space: nowrap; box-shadow: 0 2px 6px rgba(0,0,0,0.1);" onmouseover="this.style.background='rgba(255,255,255,0.3)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.background='rgba(255,255,255,0.18)'; this.style.transform='translateY(0)';" title="Acessar Dashboard de Business Intelligence">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
-        Dashboard BI
-      </a>
-
-      <div class="header-progress-wrap">
-        <div class="progress-labels">
-          <span>Progresso Geral</span>
-          <span class="progress-count" id="progressPercent">0%</span>
-        </div>
-        <div class="progress-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso do preenchimento">
-          <div class="progress-bar" id="progressBar"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
+<!-- ===================================================== 1. CABEÇALHO PRINCIPAL FIXO ===================================================== --> <header class="header" role="banner"> <!-- Espaço que coincide com a largura da barra lateral --> <div class="header-brand-slot"> <div class="brand-box"> <div class="brand-logo-wrap"> <img src="logo-plangecon.png" alt="PLANGECON" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" > <div class="brand-text-fallback" style="display:none;" > PLANGECON </div> </div> <div class="brand-titles"> <h2>PLANGECON</h2> <span>Planejamento e Controle</span> </div> </div> </div> <!-- Título principal e barra de progresso executiva --> <div class="header-main"> <div class="header-titles"> <h1>Implantação do Novo Sistema de RDO</h1> <p> Relatório Diário de Obras · Avaliação e Diagnóstico Estruturado dos Contratos </p> </div> <div style=" display: flex; align-items: center; gap: 14px; " > <!-- Botão Dashboard BI --> <a href="dashboard_rdo.html" class="btn-top-dashboard" title="Acessar Dashboard de Business Intelligence" > <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" > <line x1="18" y1="20" x2="18" y2="10"></line> <line x1="12" y1="20" x2="12" y2="4"></line> <line x1="6" y1="20" x2="6" y2="14"></line> </svg> Dashboard BI </a> <!-- Barra de progresso --> <div class="header-progress-wrap"> <div class="progress-labels"> <span>Progresso Geral</span> <span class="progress-count" id="progressPercent" > 0% </span> </div> <div class="progress-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso do preenchimento" > <div class="progress-bar" id="progressBar" ></div> </div> </div> </div> </div> </header>
 
     /* =====================================================
        LAYOUT COM SIDEBAR STICKY + CONTEÚDO
