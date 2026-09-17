@@ -86,137 +86,150 @@
     }
 
     /* =====================================================
-       CABEÇALHO SUPERIOR EXECUTIVO (PALETA CLARA & CLEAN)
+       CABEÇALHO FIXO CORPORATIVO
        ===================================================== */
-    .bi-header {
-      background: #ffffff;
-      color: var(--texto-main);
-      padding: 14px 36px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid var(--verde-corp);
-      box-shadow: 0 2px 12px rgba(15, 23, 42, 0.05);
-      position: sticky;
+    .header {
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
+      height: var(--header-h);
+      background: linear-gradient(105deg, var(--verde-dark) 0%, var(--verde-primary) 35%, var(--azul-primary) 100%);
+      color: #fff;
       z-index: 200;
+      box-shadow: 0 3px 16px rgba(10, 30, 50, 0.25);
+      display: flex;
+      align-items: stretch;
     }
 
-    .brand-group {
+    .header-brand-slot {
+      width: var(--sidebar-w);
+      flex: 0 0 var(--sidebar-w);
       display: flex;
       align-items: center;
-      gap: 16px;
+      padding: 0 20px;
+      border-right: 1px solid rgba(255, 255, 255, 0.12);
     }
 
-    .brand-logo-container {
-      width: 120px;
-      height: 46px;
-      border-radius: 0;
-      background: transparent;
-      backdrop-filter: none;
+    .brand-box {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
-      padding: 0;
-      overflow: visible;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .brand-logo-wrap {
+      width: 110px;
+      height: 52px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.4);
+      border: none;
+      box-shadow: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 8px;
       flex-shrink: 0;
+      overflow: hidden;
     }
 
-    .brand-logo-container img {
+
+.brand-logo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+    .brand-logo-wrap img {
       width: 100%;
       height: 100%;
       object-fit: contain;
     }
 
-    .brand-titles h1 {
-      font-size: 18px;
-      font-weight: 800;
-      letter-spacing: -0.3px;
-      line-height: 1.2;
-      color: var(--texto-main);
+    .brand-text-fallback {
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.8px;
+      color: #fff;
+      text-align: center;
+      line-height: 1.1;
     }
 
-    .brand-titles p {
-      font-size: 11.5px;
-      color: var(--texto-muted);
-      margin-top: 2px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .live-indicator {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 2px 9px;
-      background: #ecfdf5;
-      color: #065f46;
-      border: 1px solid #a7f3d0;
-      border-radius: 99px;
-      font-size: 10.5px;
+    .brand-titles h2 {
+      font-size: 12px;
       font-weight: 800;
+      letter-spacing: 0.4px;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      opacity: 0.95;
     }
 
-    .live-dot {
-      width: 6px;
-      height: 6px;
-      background: #10b981;
-      border-radius: 50%;
-      box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
+    .brand-titles span {
+      font-size: 10px;
+      opacity: 0.75;
+      display: block;
     }
 
-    .header-controls {
+    .header-main {
+      flex: 1;
       display: flex;
       align-items: center;
-      gap: 10px;
+      justify-content: space-between;
+      padding: 0 28px;
+      gap: 20px;
     }
 
-    .btn-header {
-      display: inline-flex;
+    .header-titles h1 {
+      font-size: clamp(15px, 1.8vw, 19px);
+      font-weight: 800;
+      letter-spacing: -0.2px;
+      line-height: 1.2;
+    }
+
+    .header-titles p {
+      font-size: 11.5px;
+      opacity: 0.86;
+      margin-top: 3px;
+    }
+
+    .header-progress-wrap {
+      min-width: 260px;
+      max-width: 340px;
+      flex: 0 0 auto;
+      background: rgba(0, 0, 0, 0.14);
+      padding: 9px 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .progress-labels {
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 8px;
-      padding: 8px 16px;
-      border-radius: var(--radius-sm);
-      font-size: 12.5px;
+      font-size: 11px;
       font-weight: 700;
-      cursor: pointer;
-      border: 1.5px solid var(--border-card);
-      background: #ffffff;
-      color: var(--texto-body);
-      transition: var(--trans);
-      text-decoration: none;
-      white-space: nowrap;
-      box-shadow: var(--shadow-sm);
+      margin-bottom: 6px;
     }
 
-    .btn-header:hover {
-      background: var(--verde-faint);
-      color: var(--verde-corp);
-      border-color: var(--verde-corp);
-      transform: translateY(-1px);
+    .progress-count {
+      color: #ffd875;
+      font-size: 10.5px;
     }
 
-    .btn-header.btn-form-link {
-      background: #ecfdf5;
-      color: var(--verde-corp);
-      border-color: #a7f3d0;
+    .progress-track {
+      height: 7px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.22);
+      overflow: hidden;
     }
 
-    .btn-header.btn-form-link:hover {
-      background: var(--verde-corp);
-      color: #ffffff;
-      border-color: var(--verde-corp);
-    }
-
-    .btn-header svg {
-      width: 15px;
-      height: 15px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 2.2;
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      border-radius: 99px;
+      background: linear-gradient(90deg, #ffc83b, #fff085);
+      transition: width var(--trans-speed);
     }
 
     /* =====================================================
