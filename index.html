@@ -87,141 +87,122 @@
 
 <!-- =====================================================
      1. CABEÇALHO PRINCIPAL FIXO
-     PADRÃO VISUAL ALINHADO AO DASHBOARD
      ===================================================== -->
 
-<header class="header bi-header" role="banner">
+<header class="header" role="banner">
 
-  <!-- Espaço correspondente à largura da barra lateral -->
-
+  <!-- Espaço que coincide com a largura da barra lateral -->
   <div class="header-brand-slot">
 
-```
-<div class="brand-box brand-group">
+    <div class="brand-box">
 
-  <!-- Logo -->
-  <div class="brand-logo-wrap brand-logo-container">
+      <div class="brand-logo-wrap">
+        <img
+          src="logo-plangecon.png"
+          alt="PLANGECON"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+        >
 
-    <img
-      src="logo-plangecon.png"
-      alt="PLANGECON"
-      onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-    >
+        <div
+          class="brand-text-fallback"
+          style="display:none;"
+        >
+          PLANGECON
+        </div>
+      </div>
 
-    <div
-      class="brand-text-fallback"
-      style="display:none;"
-    >
-      PLANGECON
+      <div class="brand-titles">
+        <h2>PLANGECON</h2>
+        <span>Planejamento e Controle</span>
+      </div>
+
     </div>
 
   </div>
 
-  <!-- Identificação -->
-  <div class="brand-titles">
 
-    <h2>PLANGECON</h2>
-
-    <p>
-      Planejamento e Controle
-    </p>
-
-  </div>
-
-</div>
-```
-
-  </div>
-
-  <!-- =====================================================
-       CONTEÚDO PRINCIPAL DO CABEÇALHO
-       ===================================================== -->
-
+  <!-- Título principal e barra de progresso executiva -->
   <div class="header-main">
 
-```
-<div class="header-titles">
+    <div class="header-titles">
 
-  <h1>
-    Implantação do Novo Sistema de RDO
-  </h1>
+      <h1>Implantação do Novo Sistema de RDO</h1>
 
-  <p>
-    Relatório Diário de Obras · Avaliação e Diagnóstico Estruturado dos Contratos
-  </p>
-
-</div>
-
-
-<!-- =================================================
-     CONTROLES DO CABEÇALHO
-     ================================================= -->
-
-<div class="header-controls">
-
-  <!-- Botão Dashboard -->
-  <a
-    href="dashboard_rdo.html"
-    class="btn-header btn-form-link"
-    title="Acessar Dashboard de Business Intelligence"
-  >
-
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-    >
-      <line x1="18" y1="20" x2="18" y2="10"></line>
-      <line x1="12" y1="20" x2="12" y2="4"></line>
-      <line x1="6" y1="20" x2="6" y2="14"></line>
-    </svg>
-
-    Dashboard
-
-  </a>
-
-
-  <!-- =================================================
-       BARRA DE PROGRESSO
-       ================================================= -->
-
-  <div class="header-progress-wrap">
-
-    <div class="progress-labels">
-
-      <span>
-        Progresso Geral
-      </span>
-
-      <span
-        class="progress-count"
-        id="progressPercent"
-      >
-        0%
-      </span>
+      <p>
+        Relatório Diário de Obras · Avaliação e Diagnóstico Estruturado dos Contratos
+      </p>
 
     </div>
 
 
     <div
-      class="progress-track"
-      role="progressbar"
-      aria-valuenow="0"
-      aria-valuemin="0"
-      aria-valuemax="100"
-      aria-label="Progresso do preenchimento"
+      style="
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      "
     >
 
-      <div
-        class="progress-bar"
-        id="progressBar"
-      ></div>
+      <!-- Botão Dashboard -->
+      <a
+        href="dashboard_rdo.html"
+        class="btn-top-dashboard"
+        title="Acessar Dashboard de Business Intelligence"
+      >
+
+        <svg
+          width="15"
+          height="15"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="18" y1="20" x2="18" y2="10"></line>
+          <line x1="12" y1="20" x2="12" y2="4"></line>
+          <line x1="6" y1="20" x2="6" y2="14"></line>
+        </svg>
+
+        Dashboard
+
+      </a>
+
+
+      <!-- Barra de progresso -->
+      <div class="header-progress-wrap">
+
+        <div class="progress-labels">
+          <span>Progresso Geral</span>
+
+          <span
+            class="progress-count"
+            id="progressPercent"
+          >
+            0%
+          </span>
+        </div>
+
+        <div
+          class="progress-track"
+          role="progressbar"
+          aria-valuenow="0"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-label="Progresso do preenchimento"
+        >
+
+          <div
+            class="progress-bar"
+            id="progressBar"
+          ></div>
+
+        </div>
+
+      </div>
 
     </div>
-
-  </div>
-
-</div>
-```
 
   </div>
 
