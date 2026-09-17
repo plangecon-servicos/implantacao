@@ -85,128 +85,139 @@
       background: none;
     }
 
-<!-- =====================================================
-     1. CABEÇALHO PRINCIPAL FIXO
-     ===================================================== -->
+    /* =====================================================
+       CABEÇALHO SUPERIOR EXECUTIVO (PALETA CLARA & CLEAN)
+       ===================================================== */
+    .bi-header {
+      background: #ffffff;
+      color: var(--texto-main);
+      padding: 14px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--verde-corp);
+      box-shadow: 0 2px 12px rgba(15, 23, 42, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+    }
 
-<header class="header" role="banner">
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
 
-  <!-- Espaço que coincide com a largura da barra lateral -->
-  <div class="header-brand-slot">
+    .brand-logo-container {
+      width: 120px;
+      height: 46px;
+      border-radius: 0;
+      background: transparent;
+      backdrop-filter: none;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0;
+      overflow: visible;
+      flex-shrink: 0;
+    }
 
-    <div class="brand-box">
+    .brand-logo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
 
-      <div class="brand-logo-wrap">
-        <img
-          src="logo-plangecon.png"
-          alt="PLANGECON"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-        >
+    .brand-titles h1 {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+      color: var(--texto-main);
+    }
 
-        <div
-          class="brand-text-fallback"
-          style="display:none;"
-        >
-          PLANGECON
-        </div>
-      </div>
+    .brand-titles p {
+      font-size: 11.5px;
+      color: var(--texto-muted);
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-      <div class="brand-titles">
-        <h2>PLANGECON</h2>
-        <span>Planejamento e Controle</span>
-      </div>
+    .live-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 2px 9px;
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+      border-radius: 99px;
+      font-size: 10.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
 
-    </div>
+    .live-dot {
+      width: 6px;
+      height: 6px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
+    }
 
-  </div>
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
+    .btn-header {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1.5px solid var(--border-card);
+      background: #ffffff;
+      color: var(--texto-body);
+      transition: var(--trans);
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: var(--shadow-sm);
+    }
 
-  <!-- Título principal e barra de progresso executiva -->
-  <div class="header-main">
+    .btn-header:hover {
+      background: var(--verde-faint);
+      color: var(--verde-corp);
+      border-color: var(--verde-corp);
+      transform: translateY(-1px);
+    }
 
-    <div class="header-titles">
+    .btn-header.btn-form-link {
+      background: #ecfdf5;
+      color: var(--verde-corp);
+      border-color: #a7f3d0;
+    }
 
-      <h1>Implantação do Novo Sistema de RDO</h1>
+    .btn-header.btn-form-link:hover {
+      background: var(--verde-corp);
+      color: #ffffff;
+      border-color: var(--verde-corp);
+    }
 
-      <p>
-        Relatório Diário de Obras · Avaliação e Diagnóstico Estruturado dos Contratos
-      </p>
-
-    </div>
-
-
-    <div
-      style="
-        display: flex;
-        align-items: center;
-        gap: 14px;
-      "
-    >
-
-      <!-- Botão Dashboard -->
-      <a
-        href="dashboard_rdo.html"
-        class="btn-top-dashboard"
-        title="Acessar Dashboard de Business Intelligence"
-      >
-
-        <svg
-          width="15"
-          height="15"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <line x1="18" y1="20" x2="18" y2="10"></line>
-          <line x1="12" y1="20" x2="12" y2="4"></line>
-          <line x1="6" y1="20" x2="6" y2="14"></line>
-        </svg>
-
-        Dashboard
-
-      </a>
-
-
-      <!-- Barra de progresso -->
-      <div class="header-progress-wrap">
-
-        <div class="progress-labels">
-          <span>Progresso Geral</span>
-
-          <span
-            class="progress-count"
-            id="progressPercent"
-          >
-            0%
-          </span>
-        </div>
-
-        <div
-          class="progress-track"
-          role="progressbar"
-          aria-valuenow="0"
-          aria-valuemin="0"
-          aria-valuemax="100"
-          aria-label="Progresso do preenchimento"
-        >
-
-          <div
-            class="progress-bar"
-            id="progressBar"
-          ></div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</header>
+    .btn-header svg {
+      width: 15px;
+      height: 15px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.2;
+    }
 
     /* =====================================================
        LAYOUT COM SIDEBAR STICKY + CONTEÚDO
