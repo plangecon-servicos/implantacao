@@ -80,16 +80,17 @@
     }
 
     /* =====================================================
-       CABEÇALHO SUPERIOR EXECUTIVO
+       CABEÇALHO SUPERIOR EXECUTIVO (PALETA CLARA & CLEAN)
        ===================================================== */
     .bi-header {
-      background: linear-gradient(110deg, var(--verde-dark) 0%, var(--verde-corp) 35%, var(--azul-corp) 100%);
-      color: #fff;
-      padding: 16px 36px;
+      background: #ffffff;
+      color: var(--texto-main);
+      padding: 14px 36px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.22);
+      border-bottom: 2px solid var(--verde-corp);
+      box-shadow: 0 2px 12px rgba(15, 23, 42, 0.05);
       position: sticky;
       top: 0;
       z-index: 200;
@@ -102,16 +103,16 @@
     }
 
     .brand-logo-container {
-      width: 100px;
-      height: 48px;
-      border-radius: var(--radius-sm);
-      background: rgba(255, 255, 255, 0.35);
-      backdrop-filter: blur(8px);
+      width: 120px;
+      height: 46px;
+      border-radius: 0;
+      background: transparent;
+      backdrop-filter: none;
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 4px 8px;
-      overflow: hidden;
+      justify-content: flex-start;
+      padding: 0;
+      overflow: visible;
       flex-shrink: 0;
     }
 
@@ -126,11 +127,12 @@
       font-weight: 800;
       letter-spacing: -0.3px;
       line-height: 1.2;
+      color: var(--texto-main);
     }
 
     .brand-titles p {
       font-size: 11.5px;
-      opacity: 0.88;
+      color: var(--texto-muted);
       margin-top: 2px;
       display: flex;
       align-items: center;
@@ -141,12 +143,12 @@
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      padding: 2px 8px;
-      background: rgba(34, 197, 94, 0.2);
-      color: #bbf7d0;
-      border: 1px solid rgba(34, 197, 94, 0.4);
+      padding: 2px 9px;
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
       border-radius: 99px;
-      font-size: 10px;
+      font-size: 10.5px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -155,9 +157,9 @@
     .live-dot {
       width: 6px;
       height: 6px;
-      background: #4ade80;
+      background: #10b981;
       border-radius: 50%;
-      box-shadow: 0 0 8px #4ade80;
+      box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
     }
 
     .header-controls {
@@ -175,18 +177,32 @@
       font-size: 12.5px;
       font-weight: 700;
       cursor: pointer;
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      background: rgba(255, 255, 255, 0.14);
-      color: #fff;
+      border: 1.5px solid var(--border-card);
+      background: #ffffff;
+      color: var(--texto-body);
       transition: var(--trans);
       text-decoration: none;
       white-space: nowrap;
+      box-shadow: var(--shadow-sm);
     }
 
     .btn-header:hover {
-      background: rgba(255, 255, 255, 0.26);
-      border-color: #fff;
+      background: var(--verde-faint);
+      color: var(--verde-corp);
+      border-color: var(--verde-corp);
       transform: translateY(-1px);
+    }
+
+    .btn-header.btn-form-link {
+      background: #ecfdf5;
+      color: var(--verde-corp);
+      border-color: #a7f3d0;
+    }
+
+    .btn-header.btn-form-link:hover {
+      background: var(--verde-corp);
+      color: #ffffff;
+      border-color: var(--verde-corp);
     }
 
     .btn-header svg {
@@ -877,6 +893,133 @@
       margin-top: 2px;
     }
 
+    /* =====================================================
+       RODAPÉ INSTITUCIONAL CORPORATIVO (LIGHT THEME)
+       ===================================================== */
+    .app-corporate-footer {
+      background: #ffffff;
+      border: 1px solid var(--border-card);
+      border-top: 3px solid var(--verde-corp);
+      border-radius: var(--radius-md);
+      margin-top: 32px;
+      padding: 30px 32px 24px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1.2fr;
+      gap: 32px;
+      align-items: flex-start;
+    }
+
+    .footer-brand-col {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-logo-wrap {
+      width: 135px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .footer-desc {
+      font-size: 12px;
+      color: var(--texto-muted);
+      line-height: 1.5;
+      max-width: 360px;
+    }
+
+    .footer-copyright {
+      font-size: 11px;
+      color: var(--texto-light);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    .footer-col-title {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--texto-main);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-col-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border-card);
+      max-width: 50px;
+    }
+
+    .footer-contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-contact-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 12.5px;
+    }
+
+    .footer-contact-list svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--verde-corp);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .footer-item-label {
+      display: block;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--texto-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 2px;
+    }
+
+    .footer-contact-link {
+      color: var(--azul-corp);
+      text-decoration: none;
+      font-weight: 700;
+      transition: var(--trans);
+    }
+
+    .footer-contact-link:hover {
+      color: var(--verde-corp);
+      text-decoration: underline;
+    }
+
+    .footer-contact-text {
+      color: var(--texto-main);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    
     /* =====================================================
        RESPONSIVIDADE (TABLET & MOBILE)
        ===================================================== */
