@@ -893,133 +893,207 @@
       margin-top: 2px;
     }
 
-    /* =====================================================
-       RODAPÉ INSTITUCIONAL CORPORATIVO (LIGHT THEME)
-       ===================================================== */
-    .app-corporate-footer {
-      background: #ffffff;
-      border: 1px solid var(--border-card);
-      border-top: 3px solid var(--verde-corp);
-      border-radius: var(--radius-md);
-      margin-top: 32px;
-      padding: 30px 32px 24px;
-      box-shadow: var(--shadow-card);
-    }
+<!-- =====================================================
+     RODAPÉ INSTITUCIONAL CORPORATIVO
+     ===================================================== -->
 
-    .footer-inner {
-      display: grid;
-      grid-template-columns: 1.3fr 1fr 1.2fr;
-      gap: 32px;
-      align-items: flex-start;
-    }
+<footer
+  class="app-corporate-footer"
+  role="contentinfo"
+>
 
-    .footer-brand-col {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+  <div class="footer-inner">
 
-    .footer-logo-wrap {
-      width: 135px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-    }
+    <!-- =================================================
+         COLUNA DA MARCA
+         ================================================= -->
 
-    .footer-logo-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
+    <div class="footer-brand-col">
 
-    .footer-desc {
-      font-size: 12px;
-      color: var(--texto-muted);
-      line-height: 1.5;
-      max-width: 360px;
-    }
+      <div class="footer-logo-wrap">
 
-    .footer-copyright {
-      font-size: 11px;
-      color: var(--texto-light);
-      margin-top: 4px;
-      font-weight: 500;
-    }
+        <img
+          src="logo-plangecon.png"
+          alt="PLANGECON"
+          onerror="
+            this.parentElement.innerHTML =
+            '<strong style=&quot;color:var(--verde-primary);font-size:13px;font-weight:900;&quot;>PLANGECON</strong>'
+          "
+        />
 
-    .footer-col-title {
-      font-size: 12.5px;
-      font-weight: 800;
-      color: var(--texto-main);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+      </div>
 
-    .footer-col-title::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border-card);
-      max-width: 50px;
-    }
+      <p class="footer-desc">
+        Setor de Planejamento e Controle
+      </p>
 
-    .footer-contact-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+      <div class="footer-copyright">
+        © 2026 PLANGECON SERVIÇOS INDUSTRIAIS · Todos os direitos reservados.
+      </div>
 
-    .footer-contact-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 12.5px;
-    }
+    </div>
 
-    .footer-contact-list svg {
-      width: 18px;
-      height: 18px;
-      stroke: var(--verde-corp);
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
 
-    .footer-item-label {
-      display: block;
-      font-size: 10.5px;
-      font-weight: 700;
-      color: var(--texto-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-      margin-bottom: 2px;
-    }
+    <!-- =================================================
+         ATENDIMENTO
+         ================================================= -->
 
-    .footer-contact-link {
-      color: var(--azul-corp);
-      text-decoration: none;
-      font-weight: 700;
-      transition: var(--trans);
-    }
+    <div class="footer-info-col">
 
-    .footer-contact-link:hover {
-      color: var(--verde-corp);
-      text-decoration: underline;
-    }
+      <h4 class="footer-col-title">
+        Atendimento &amp; Contato
+      </h4>
 
-    .footer-contact-text {
-      color: var(--texto-main);
-      font-weight: 600;
-      line-height: 1.4;
-    }
-    
+      <ul class="footer-contact-list">
+
+        <li>
+
+          <svg viewBox="0 0 24 24">
+
+            <path
+              d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+            />
+
+            <polyline
+              points="22,6 12,13 2,6"
+            />
+
+          </svg>
+
+          <div>
+
+            <span class="footer-item-label">
+              Medição / Contratos:
+            </span>
+
+            <a
+              href="mailto:medicao@plangecon.com.br"
+              class="footer-contact-link"
+            >
+              medicao@plangecon.com.br
+            </a>
+
+          </div>
+
+        </li>
+
+
+        <li>
+
+          <svg viewBox="0 0 24 24">
+
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+            />
+
+          </svg>
+
+          <div>
+
+            <span class="footer-item-label">
+              Telefone:
+            </span>
+
+            <a
+              href="tel:+559433466682"
+              class="footer-contact-link"
+            >
+              Tel: (94) 3346-6682
+            </a>
+
+          </div>
+
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <!-- =================================================
+         HORÁRIO E LOCALIZAÇÃO
+         ================================================= -->
+
+    <div class="footer-info-col">
+
+      <h4 class="footer-col-title">
+        Horário &amp; Localização
+      </h4>
+
+      <ul class="footer-contact-list">
+
+        <li>
+
+          <svg viewBox="0 0 24 24">
+
+            <circle
+              cx="12"
+              cy="12"
+              r="10"
+            />
+
+            <polyline
+              points="12 6 12 12 16 14"
+            />
+
+          </svg>
+
+          <div>
+
+            <span class="footer-item-label">
+              Horário de Atendimento:
+            </span>
+
+            <span class="footer-contact-text">
+              Seg – Sex: 08:00 – 18:00
+            </span>
+
+          </div>
+
+        </li>
+
+
+        <li>
+
+          <svg viewBox="0 0 24 24">
+
+            <path
+              d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+            />
+
+            <circle
+              cx="12"
+              cy="10"
+              r="3"
+            />
+
+          </svg>
+
+          <div>
+
+            <span class="footer-item-label">
+              Endereço:
+            </span>
+
+            <address
+              class="footer-contact-text"
+              style="font-style:normal;"
+            >
+              Rua A, 119 - Cidade Nova, Parauapebas - PA, 68515-000
+            </address>
+
+          </div>
+
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+</footer>
+
     /* =====================================================
        RESPONSIVIDADE (TABLET & MOBILE)
        ===================================================== */
