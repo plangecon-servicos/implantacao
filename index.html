@@ -89,171 +89,124 @@
      1. CABEÇALHO PRINCIPAL FIXO
      ===================================================== -->
 
-.header{
-    position:sticky;
-    top:0;
-    z-index:1000;
+<header class="header" role="banner">
 
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+  <!-- Espaço que coincide com a largura da barra lateral -->
+  <div class="header-brand-slot">
 
-    padding:18px 26px;
+    <div class="brand-box">
 
-    background:#ffffff;
+      <div class="brand-logo-wrap">
+        <img
+          src="logo-plangecon.png"
+          alt="PLANGECON"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+        >
 
-    border-bottom:4px solid var(--verde-corp);
+        <div
+          class="brand-text-fallback"
+          style="display:none;"
+        >
+          PLANGECON
+        </div>
+      </div>
 
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.08);
+      <div class="brand-titles">
+        <h2>PLANGECON</h2>
+        <span>Planejamento e Controle</span>
+      </div>
 
-    backdrop-filter:blur(12px);
-}
+    </div>
 
-.brand-group{
-    display:flex;
-    align-items:center;
-    gap:16px;
-}
+  </div>
 
-.brand-logo-container{
-    width:60px;
-    height:60px;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+  <!-- Título principal e barra de progresso executiva -->
+  <div class="header-main">
 
-    padding:6px;
+    <div class="header-titles">
 
-    background:#fff;
-    border-radius:14px;
+      <h1>Implantação do Novo Sistema de RDO</h1>
 
-    border:1px solid var(--border-card);
-}
+      <p>
+        Relatório Diário de Obras · Avaliação e Diagnóstico Estruturado dos Contratos
+      </p>
 
-.brand-logo-container img{
-    max-width:100%;
-    max-height:100%;
-    object-fit:contain;
-}
+    </div>
 
-.brand-titles h1{
-    margin:0;
-    font-size:22px;
-    font-weight:800;
-    color:#153b2e;
-}
 
-.brand-titles p{
-    margin-top:6px;
-    display:flex;
-    align-items:center;
-    gap:12px;
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      "
+    >
 
-    color:#64748b;
-    font-size:13px;
-}
+      <!-- Botão Dashboard -->
+      <a
+        href="dashboard_rdo.html"
+        class="btn-top-dashboard"
+        title="Acessar Dashboard de Business Intelligence"
+      >
 
-.header-controls{
-    display:flex;
-    align-items:center;
-    gap:18px;
-}
+        <svg
+          width="15"
+          height="15"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="18" y1="20" x2="18" y2="10"></line>
+          <line x1="12" y1="20" x2="12" y2="4"></line>
+          <line x1="6" y1="20" x2="6" y2="14"></line>
+        </svg>
 
-.live-indicator{
-    display:flex;
-    align-items:center;
-    gap:6px;
+        Dashboard
 
-    padding:4px 10px;
+      </a>
 
-    border-radius:20px;
 
-    background:rgba(16,185,129,.12);
+      <!-- Barra de progresso -->
+      <div class="header-progress-wrap">
 
-    color:#059669;
+        <div class="progress-labels">
+          <span>Progresso Geral</span>
 
-    font-weight:700;
-    font-size:11px;
-}
+          <span
+            class="progress-count"
+            id="progressPercent"
+          >
+            0%
+          </span>
+        </div>
 
-.live-dot{
-    width:8px;
-    height:8px;
-    border-radius:50%;
-    background:#10b981;
-}
+        <div
+          class="progress-track"
+          role="progressbar"
+          aria-valuenow="0"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-label="Progresso do preenchimento"
+        >
 
-.btn-header{
-    height:42px;
+          <div
+            class="progress-bar"
+            id="progressBar"
+          ></div>
 
-    display:flex;
-    align-items:center;
-    gap:8px;
+        </div>
 
-    padding:0 18px;
+      </div>
 
-    border:none;
-    border-radius:10px;
+    </div>
 
-    background:var(--verde-corp);
-    color:#fff;
+  </div>
 
-    font-weight:700;
-    cursor:pointer;
-
-    transition:.25s;
-}
-
-.btn-header:hover{
-    transform:translateY(-2px);
-}
-
-.btn-header svg{
-    width:16px;
-    height:16px;
-    fill:none;
-    stroke:currentColor;
-    stroke-width:2;
-}
-
-.header-progress-wrap{
-    min-width:240px;
-}
-
-.progress-labels{
-    display:flex;
-    justify-content:space-between;
-
-    margin-bottom:6px;
-
-    font-size:12px;
-    font-weight:700;
-}
-
-.progress-track{
-    height:8px;
-    overflow:hidden;
-
-    background:#e2e8f0;
-    border-radius:999px;
-}
-
-.progress-bar{
-    height:100%;
-    width:0%;
-
-    border-radius:999px;
-
-    background:linear-gradient(
-      90deg,
-      #16a34a,
-      #22c55e
-    );
-
-    transition:.5s;
-}
+</header>
 
     /* =====================================================
        LAYOUT COM SIDEBAR STICKY + CONTEÚDO
