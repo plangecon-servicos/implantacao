@@ -117,60 +117,43 @@
        PADRÃO VISUAL DO DASHBOARD
        ===================================================== */
 
-    .header {
-
-      position: fixed;
-
-      top: 0;
-      left: 0;
-      right: 0;
-
-      height: var(--header-h);
-
-      background: #ffffff;
-
-      color: var(--texto-title);
-
-      z-index: 200;
-
-      display: flex;
-      align-items: stretch;
-
-      border-bottom: 2px solid var(--verde-primary);
-
-      box-shadow:
-        0 2px 12px rgba(15, 23, 42, 0.05);
-
-      box-sizing: border-box;
-    }
+ .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-h);
+  background: #fff;
+  color: var(--texto-title);
+  z-index: 200;
+  display: flex;
+  align-items: stretch;
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.05);
+  box-sizing: border-box;
+  border-bottom: none;
+}
 
 
     /* =====================================================
        ÁREA DA MARCA / LOGO
        ===================================================== */
 
-    .header-brand-slot {
+.header-brand-slot {
+  width: var(--sidebar-w);
+  min-width: var(--sidebar-w);
+  max-width: var(--sidebar-w);
+  flex: 0 0 var(--sidebar-w);
 
-      width: var(--sidebar-w);
+  display: flex;
+  align-items: center;
 
-      min-width: var(--sidebar-w);
+  padding: 0 20px;
 
-      max-width: var(--sidebar-w);
+  border-right: none;
 
-      flex: 0 0 var(--sidebar-w);
-
-      display: flex;
-      align-items: center;
-
-      padding: 0 20px;
-
-      border-right:
-        1px solid var(--border-card);
-
-      box-sizing: border-box;
-
-      background: #ffffff;
-    }
+  box-sizing: border-box;
+  background: #fff;
+}
 
 
     .brand-box {
@@ -303,249 +286,312 @@
     }
 
 
-    /* =====================================================
-       ÁREA PRINCIPAL DO CABEÇALHO
-       ===================================================== */
+/* =====================================================
+   CABEÇALHO PRINCIPAL FIXO
+   ===================================================== */
 
-    .header-main {
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 
-      flex: 1;
+  height: var(--header-h);
 
-      min-width: 0;
+  background: #ffffff;
+  color: var(--texto-title);
 
-      display: flex;
+  z-index: 200;
 
-      align-items: center;
+  display: flex;
+  align-items: stretch;
 
-      justify-content: space-between;
+  /* Linha verde horizontal mantida */
+  border-bottom: 2px solid var(--verde-primary);
 
-      gap: 24px;
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.05);
 
-      padding: 0 28px;
+  box-sizing: border-box;
+}
 
-      box-sizing: border-box;
-    }
 
+/* =====================================================
+   ÁREA DA LOGO
+   ===================================================== */
 
-    .header-titles {
-      min-width: 0;
-    }
+.header-brand-slot {
+  width: var(--sidebar-w);
+  min-width: var(--sidebar-w);
+  max-width: var(--sidebar-w);
 
+  flex: 0 0 var(--sidebar-w);
 
-    .header-titles h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-      font-size: 18px;
+  padding: 0 20px;
 
-      font-weight: 800;
+  /* Remove somente a linha vertical */
+  border-right: none;
 
-      letter-spacing: -0.3px;
+  box-sizing: border-box;
 
-      line-height: 1.2;
+  background: #ffffff;
+}
 
-      color: var(--texto-title);
 
-      margin: 0;
-    }
+/* =====================================================
+   CONTAINER DA LOGO
+   ===================================================== */
 
+.brand-box {
+  width: 100%;
+  min-width: 0;
 
-    .header-titles p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-      font-size: 11.5px;
+  text-decoration: none;
+  color: var(--texto-title);
+}
 
-      color: var(--texto-muted);
 
-      opacity: 1;
+/* =====================================================
+   LOGO
+   ===================================================== */
 
-      margin-top: 3px;
+.brand-logo-wrap {
+  width: 120px !important;
+  height: 46px !important;
 
-      line-height: 1.3;
+  min-width: 120px !important;
+  max-width: 120px !important;
 
-      white-space: nowrap;
+  min-height: 46px !important;
+  max-height: 46px !important;
 
-      overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-      text-overflow: ellipsis;
-    }
+  padding: 0 !important;
+  margin: 0;
 
+  background: transparent;
 
-    /* =====================================================
-       ÁREA DIREITA
-       ===================================================== */
+  border: none;
+  border-radius: 0;
 
-    .header-main > div:last-child {
+  box-shadow: none;
 
-      display: flex !important;
+  overflow: hidden;
 
-      align-items: center;
+  flex-shrink: 0;
 
-      gap: 10px !important;
+  box-sizing: border-box;
+}
 
-      flex-shrink: 0;
 
-      box-sizing: border-box;
-    }
+.brand-logo-wrap img {
+  display: block;
 
+  width: 120px !important;
+  height: 46px !important;
 
-    /* =====================================================
-       BOTÃO DASHBOARD
-       ===================================================== */
+  min-width: 0 !important;
+  max-width: 120px !important;
 
-    .btn-top-dashboard {
+  min-height: 0 !important;
+  max-height: 46px !important;
 
-      display: inline-flex !important;
+  padding: 0;
+  margin: 0;
 
-      align-items: center;
+  object-fit: contain;
+  object-position: center;
 
-      justify-content: center;
+  box-sizing: border-box;
+}
 
-      gap: 8px !important;
 
-      height: 34px;
+/* =====================================================
+   ÁREA PRINCIPAL DO CABEÇALHO
+   ===================================================== */
 
-      padding: 8px 16px !important;
+.header-main {
+  flex: 1;
+  min-width: 0;
 
-      border-radius: var(--radius-sm) !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-      background: var(--verde-faint) !important;
+  gap: 24px;
 
-      border:
-        1.5px solid var(--verde-border) !important;
+  padding: 0 28px;
 
-      color: var(--verde-primary) !important;
+  box-sizing: border-box;
+}
 
-      font-size: 12.5px !important;
 
-      font-weight: 700 !important;
+/* =====================================================
+   TÍTULOS
+   ===================================================== */
 
-      text-decoration: none;
+.header-titles {
+  min-width: 0;
+}
 
-      white-space: nowrap;
+.header-titles h1 {
+  font-size: 18px;
+  font-weight: 800;
 
-      box-shadow: var(--shadow-sm) !important;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
 
-      transition:
-        all var(--trans-speed);
+  color: var(--texto-title);
 
-      box-sizing: border-box;
-    }
+  margin: 0;
+}
 
+.header-titles p {
+  font-size: 11.5px;
 
-    .btn-top-dashboard:hover {
+  color: var(--texto-muted);
 
-      background:
-        var(--verde-primary) !important;
+  margin: 3px 0 0;
 
-      border-color:
-        var(--verde-primary) !important;
+  line-height: 1.4;
+}
 
-      color: #ffffff !important;
 
-      transform:
-        translateY(-1px);
-    }
+/* =====================================================
+   BOTÃO DASHBOARD
+   ===================================================== */
 
+.btn-top-dashboard {
+  display: inline-flex !important;
 
-    .btn-top-dashboard svg {
+  align-items: center;
+  justify-content: center;
 
-      width: 15px !important;
-      height: 15px !important;
+  gap: 7px;
 
-      flex-shrink: 0;
+  padding: 8px 12px;
 
-      stroke: currentColor;
+  background: var(--verde-faint) !important;
 
-      fill: none;
+  border: 1.5px solid var(--verde-border) !important;
 
-      stroke-width: 2.2;
+  border-radius: 7px;
 
-      stroke-linecap: round;
+  color: var(--verde-primary) !important;
 
-      stroke-linejoin: round;
-    }
+  text-decoration: none;
 
+  font-size: 11px;
+  font-weight: 800;
 
-    /* =====================================================
-       PROGRESSO
-       ===================================================== */
+  line-height: 1;
 
-    .header-progress-wrap {
+  white-space: nowrap;
 
-      width: 190px;
+  cursor: pointer;
 
-      min-width: 190px;
+  transition:
+    background var(--trans-speed),
+    border-color var(--trans-speed),
+    color var(--trans-speed),
+    transform var(--trans-speed);
+}
 
-      max-width: 190px;
+.btn-top-dashboard:hover {
+  background: #dff1e8 !important;
 
-      flex: 0 0 190px;
+  border-color: var(--verde-primary) !important;
 
-      background: transparent;
+  color: var(--verde-dark) !important;
 
-      padding: 0;
+  transform: translateY(-1px);
+}
 
-      border: none;
 
-      border-radius: 0;
+/* =====================================================
+   PROGRESSO
+   ===================================================== */
 
-      box-sizing: border-box;
-    }
+.header-progress-wrap {
+  width: 190px;
+  min-width: 190px;
+  max-width: 190px;
 
+  background: transparent;
 
-    .progress-labels {
+  padding: 0;
 
-      display: flex;
+  border: none;
+}
 
-      justify-content: space-between;
 
-      align-items: center;
+/* =====================================================
+   LABELS DO PROGRESSO
+   ===================================================== */
 
-      font-size: 10.5px;
+.progress-labels {
+  display: flex;
 
-      font-weight: 700;
+  align-items: center;
+  justify-content: space-between;
 
-      margin-bottom: 5px;
+  gap: 10px;
 
-      color: var(--texto-muted);
-    }
+  margin-bottom: 5px;
+}
 
+.progress-labels span:first-child {
+  font-size: 10px;
+  font-weight: 700;
 
-    .progress-count {
+  color: var(--texto-muted);
+}
 
-      color: var(--verde-primary);
+.progress-count {
+  font-size: 10px;
+  font-weight: 800;
 
-      font-size: 10.5px;
+  color: var(--verde-primary);
+}
 
-      font-weight: 800;
-    }
 
+/* =====================================================
+   BARRA DE PROGRESSO
+   ===================================================== */
 
-    .progress-track {
+.progress-track {
+  width: 100%;
+  height: 6px;
 
-      width: 100%;
+  background: #e5e7eb;
 
-      height: 6px;
+  border-radius: 999px;
 
-      border-radius: 99px;
+  overflow: hidden;
 
-      background: #e5e7eb;
+  box-sizing: border-box;
+}
 
-      overflow: hidden;
-    }
+.progress-bar {
+  width: 0%;
+  height: 100%;
 
+  background: var(--verde-primary);
 
-    .progress-bar {
+  border-radius: inherit;
 
-      height: 100%;
-
-      width: 0%;
-
-      border-radius: 99px;
-
-      background: var(--verde-primary);
-
-      transition:
-        width var(--trans-speed);
-    }
-
+  transition: width 0.25s ease;
+}
 
     /* =====================================================
        LAYOUT COM SIDEBAR
@@ -3721,158 +3767,104 @@
 <body>
 
 
-  <!-- =====================================================
-       1. CABEÇALHO PRINCIPAL FIXO
-       ===================================================== -->
+<!-- =====================================================
+     CABEÇALHO PRINCIPAL FIXO
+     ===================================================== -->
 
-  <header
-    class="header"
-    role="banner"
-  >
+<header class="header" role="banner">
 
-    <div class="header-brand-slot">
+  <div class="header-brand-slot">
 
-      <div class="brand-box">
+    <div class="brand-box">
 
-        <div class="brand-logo-wrap">
+      <div class="brand-logo-wrap">
+        <img
+          src="logo-plangecon.png"
+          alt="PLANGECON"
+        />
+      </div>
 
-          <img
-            src="logo-plangecon.png"
-            alt="PLANGECON"
-            onerror="
-              this.style.display='none';
-              this.nextElementSibling.style.display='block';
-            "
-          />
+    </div>
 
-          <div
-            class="brand-text-fallback"
-            style="display:none;"
-          >
-            PLANGECON
-          </div>
+  </div>
 
-        </div>
+  <div class="header-main">
 
+    <div class="header-titles">
 
-        <div class="brand-titles">
+      <h1>
+        Implantação do Novo Aplicativo de RDO
+      </h1>
 
-          <h2>
-            PLANGECON
-          </h2>
+      <p>
+        Relatório Diário de Obras · Avaliação e Diagnóstico Estruturado dos Contratos
+      </p>
+
+    </div>
+
+    <div
+      style="
+        display:flex;
+        align-items:center;
+        gap:14px;
+      "
+    >
+
+      <a
+        href="dashboard_rdo.html"
+        class="btn-top-dashboard"
+        title="Acessar Dashboard de Business Intelligence"
+      >
+
+        <svg
+          width="15"
+          height="15"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="18" y1="20" x2="18" y2="10"></line>
+          <line x1="12" y1="20" x2="12" y2="4"></line>
+          <line x1="6" y1="20" x2="6" y2="14"></line>
+        </svg>
+
+        Dashboard
+
+      </a>
+
+      <div class="header-progress-wrap">
+
+        <div class="progress-labels">
 
           <span>
-            Planejamento e Controle
+            Progresso Geral
+          </span>
+
+          <span
+            class="progress-count"
+            id="progressPercent"
+          >
+            0%
           </span>
 
         </div>
 
-      </div>
-
-    </div>
-
-
-    <div class="header-main">
-
-      <div class="header-titles">
-
-        <h1>
-          Implantação do Novo Aplicativo de RDO
-        </h1>
-
-        <p>
-          Relatório Diário de Obras · Avaliação e Diagnóstico Estruturado dos Contratos
-        </p>
-
-      </div>
-
-
-      <div
-        style="
-          display:flex;
-          align-items:center;
-          gap:14px;
-        "
-      >
-
-        <a
-          href="dashboard_rdo.html"
-          class="btn-top-dashboard"
-          title="Acessar Dashboard de Business Intelligence"
-        >
-
-          <svg
-            width="15"
-            height="15"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <line
-              x1="18"
-              y1="20"
-              x2="18"
-              y2="10"
-            ></line>
-
-            <line
-              x1="12"
-              y1="20"
-              x2="12"
-              y2="4"
-            ></line>
-
-            <line
-              x1="6"
-              y1="20"
-              x2="6"
-              y2="14"
-            ></line>
-          </svg>
-
-          Dashboard
-
-        </a>
-
-
         <div
-          class="header-progress-wrap"
+          class="progress-track"
+          role="progressbar"
+          aria-valuenow="0"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-label="Progresso do preenchimento"
         >
-
-          <div class="progress-labels">
-
-            <span>
-              Progresso Geral
-            </span>
-
-            <span
-              class="progress-count"
-              id="progressPercent"
-            >
-              0%
-            </span>
-
-          </div>
-
 
           <div
-            class="progress-track"
-            role="progressbar"
-            aria-valuenow="0"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            aria-label="Progresso do preenchimento"
-          >
-
-            <div
-              class="progress-bar"
-              id="progressBar"
-            ></div>
-
-          </div>
+            class="progress-bar"
+            id="progressBar"
+          ></div>
 
         </div>
 
@@ -3880,8 +3872,9 @@
 
     </div>
 
-  </header>
+  </div>
 
+</header>
 
   <!-- =====================================================
        2. CONTAINER DO APLICATIVO
