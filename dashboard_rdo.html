@@ -43,10 +43,10 @@
       --roxo-corp:      #6366f1;
       --roxo-faint:     #eef2ff;
 
-      --bg-dashboard:   #f1f5f9;
+      --bg-dashboard:   #f8fafc;
       --bg-card:        #ffffff;
-      --border-card:    #cbd5e1;
-      --border-subtle:  #e2e8f0;
+      --border-card:    #e2e8f0;
+      --border-subtle:  #edf2f7;
 
       --texto-main:     #0f172a;
       --texto-body:     #334155;
@@ -57,11 +57,11 @@
       --radius-md:      14px;
       --radius-lg:      18px;
 
-      --shadow-sm:      0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
-      --shadow-card:    0 4px 14px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.04);
-      --shadow-hover:   0 10px 25px rgba(15, 23, 42, 0.1), 0 4px 8px rgba(15, 23, 42, 0.06);
+      --shadow-sm:      0 1px 3px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.03);
+      --shadow-card:    0 2px 10px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.03);
+      --shadow-hover:   0 8px 22px rgba(15, 23, 42, 0.08), 0 3px 6px rgba(15, 23, 42, 0.04);
 
-      --trans:          all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+      --trans:          all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     *, *::before, *::after {
@@ -152,6 +152,7 @@
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      transition: var(--trans);
     }
 
     .live-dot {
@@ -218,8 +219,154 @@
        ===================================================== */
     .dashboard-wrapper {
       max-width: 1420px;
-      margin: 24px auto 0;
+      margin: 20px auto 0;
       padding: 0 32px;
+    }
+
+    /* =====================================================
+       BARRA DE FILTROS INTERATIVOS (POWER BI SLICER BAR)
+       ===================================================== */
+    .slicer-panel {
+      background: #ffffff;
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-md);
+      padding: 16px 24px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .slicer-header-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--texto-main);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding-right: 12px;
+      border-right: 2px solid var(--border-subtle);
+    }
+
+    .slicer-header-title svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--azul-corp);
+      fill: none;
+      stroke-width: 2.2;
+    }
+
+    .slicers-grid {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      flex: 1;
+    }
+
+    .slicer-field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 200px;
+      flex: 1;
+    }
+
+    .slicer-field label {
+      font-size: 10.5px;
+      font-weight: 800;
+      color: var(--texto-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .slicer-field select {
+      background: #f8fafc;
+      border: 1.5px solid var(--border-card);
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--texto-main);
+      cursor: pointer;
+      outline: none;
+      transition: var(--trans);
+      font-family: inherit;
+    }
+
+    .slicer-field select:hover,
+    .slicer-field select:focus {
+      border-color: var(--verde-corp);
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(14, 99, 63, 0.1);
+    }
+
+    .slicer-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-ponto-zero {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 16px;
+      background: #f1f5f9;
+      border: 1.5px solid #cbd5e1;
+      border-radius: var(--radius-sm);
+      color: var(--texto-body);
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: var(--trans);
+      white-space: nowrap;
+    }
+
+    .btn-ponto-zero:hover {
+      background: var(--azul-faint);
+      color: var(--azul-corp);
+      border-color: var(--azul-border);
+      transform: translateY(-1px);
+    }
+
+    .btn-ponto-zero.active {
+      background: var(--azul-corp);
+      color: #ffffff;
+      border-color: var(--azul-corp);
+      box-shadow: 0 2px 8px rgba(45, 85, 156, 0.3);
+    }
+
+    .btn-ponto-zero svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.2;
+    }
+
+    /* Badge de Modo Ativo */
+    .view-mode-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 99px;
+      font-size: 11px;
+      font-weight: 800;
+      background: #eef2ff;
+      color: #4338ca;
+      border: 1px solid #c7d2fe;
+      white-space: nowrap;
     }
 
     /* =====================================================
@@ -237,6 +384,7 @@
       margin-bottom: 22px;
       flex-wrap: wrap;
       gap: 16px;
+      transition: var(--trans);
     }
 
     .context-info-items {
@@ -286,6 +434,20 @@
       background: #ecfdf5;
       color: var(--verde-corp);
       border: 1px solid var(--verde-border);
+      transition: var(--trans);
+    }
+
+    /* =====================================================
+       TRANSIÇÕES E ANIMAÇÕES DE TROCA DE DADOS
+       ===================================================== */
+    .anim-fade {
+      transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .anim-updating {
+      opacity: 0.35 !important;
+      transform: translateY(4px) scale(0.997) !important;
     }
 
     /* =====================================================
@@ -375,10 +537,11 @@
     }
 
     .kpi-number {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 800;
       color: var(--texto-main);
       letter-spacing: -0.6px;
+      line-height: 1.15;
     }
 
     .kpi-sub {
@@ -690,6 +853,14 @@
       gap: 8px;
     }
 
+    .pipeline-meta-note {
+      font-size: 10.5px;
+      color: var(--texto-muted);
+      display: block;
+      margin-top: 2px;
+      font-weight: 500;
+    }
+
     .status-pill {
       font-size: 10.5px;
       font-weight: 800;
@@ -725,7 +896,7 @@
     }
 
     /* =====================================================
-       MATRIZ SWOT / FOFA & ROADMAP DE CLIENTES (VALE/ARCADIS)
+       MATRIZ SWOT / FOFA & ROADMAP DE CLIENTES
        ===================================================== */
     .bottom-analytics-grid {
       display: grid;
@@ -802,7 +973,7 @@
       font-size: 11.5px;
       line-height: 1.45;
       color: #334155;
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.85);
       padding: 8px 10px;
       border-radius: 6px;
       border-left: 3px solid currentColor;
@@ -816,6 +987,7 @@
       padding: 15px 18px;
       border-radius: var(--radius-sm);
       margin-bottom: 16px;
+      transition: var(--trans);
     }
 
     .client-spec-top {
@@ -858,6 +1030,7 @@
       border-left: 2px solid #cbd5e1;
       padding-left: 20px;
       position: relative;
+      transition: var(--trans);
     }
 
     .timeline-node {
@@ -898,12 +1071,11 @@
        ===================================================== */
     .app-corporate-footer {
       width: 72%;
-      margin: 32px auto 0 auto;
+      margin: 36px auto 0 auto;
       background: #ffffff;
       border: 1px solid var(--border-card);
       border-top: 3px solid var(--verde-corp);
       border-radius: var(--radius-md);
-      margin-top: 32px;
       padding: 30px 32px 24px;
       box-shadow: var(--shadow-card);
     }
@@ -1022,103 +1194,6 @@
       line-height: 1.4;
     }
 
-
-          <!-- =================================================
-               HORÁRIO E LOCALIZAÇÃO
-               ================================================= -->
-
-          <div class="footer-info-col">
-
-            <h4 class="footer-col-title">
-
-              Horário &amp; Localização
-
-            </h4>
-
-
-            <ul class="footer-contact-list">
-
-
-              <li>
-
-                <svg viewBox="0 0 24 24">
-
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="10"
-                  />
-
-                  <polyline
-                    points="12 6 12 12 16 14"
-                  />
-
-                </svg>
-
-
-                <div>
-
-                  <span class="footer-item-label">
-                    Horário de Atendimento:
-                  </span>
-
-                  <span class="footer-contact-text">
-                    Seg – Sex: 08:00 – 18:00
-                  </span>
-
-                </div>
-
-              </li>
-
-
-              <li>
-
-                <svg viewBox="0 0 24 24">
-
-                  <path
-                    d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
-                  />
-
-                  <circle
-                    cx="12"
-                    cy="10"
-                    r="3"
-                  />
-
-                </svg>
-
-
-                <div>
-
-                  <span class="footer-item-label">
-                    Endereço:
-                  </span>
-
-                  <address
-                    class="footer-contact-text"
-                    style="font-style:normal;"
-                  >
-                    Rua A, 119 - Cidade Nova, Parauapebas - PA, 68515-000
-                  </address>
-
-                </div>
-
-              </li>
-
-            </ul>
-
-          </div>
-
-        </div>
-
-      </footer>
-
-
-    </main>
-
-  </div>
-
-
     /* =====================================================
        RESPONSIVIDADE (TABLET & MOBILE)
        ===================================================== */
@@ -1126,6 +1201,10 @@
       .kpi-row { grid-template-columns: repeat(2, 1fr); }
       .exec-summary-grid { grid-template-columns: 1fr; }
       .charts-main-grid, .bottom-analytics-grid { grid-template-columns: 1fr; }
+      .app-corporate-footer { width: 100%; }
+      .footer-inner { grid-template-columns: 1fr; gap: 24px; }
+      .slicer-panel { flex-direction: column; align-items: stretch; }
+      .slicer-header-title { border-right: none; border-bottom: 2px solid var(--border-subtle); padding-bottom: 10px; }
     }
 
     @media (max-width: 768px) {
@@ -1136,17 +1215,22 @@
       .context-bar { flex-direction: column; align-items: flex-start; }
       .pipeline-grid, .swot-container { grid-template-columns: 1fr; }
       .donut-layout { flex-direction: column; }
+      .slicers-grid { flex-direction: column; }
+      .slicer-field { width: 100%; }
+      .slicer-actions { justify-content: stretch; }
+      .btn-ponto-zero { width: 100%; justify-content: center; }
     }
 
     /* =====================================================
        IMPRESSÃO CORPORATIVA / PDF
        ===================================================== */
     @media print {
-      .bi-header, .context-bar .action-recommendation { display: none !important; }
+      .bi-header, .slicer-panel, .context-bar .action-recommendation { display: none !important; }
       body { background: #fff !important; font-size: 10pt !important; }
       .dashboard-wrapper { max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
       .card-panel, .kpi-box, .executive-summary-card { box-shadow: none !important; border: 1px solid #94a3b8 !important; page-break-inside: avoid; }
       .kpi-row { grid-template-columns: repeat(4, 1fr) !important; }
+      .app-corporate-footer { width: 100% !important; margin-top: 15px !important; }
       @page { margin: 12mm; }
     }
   </style>
@@ -1159,19 +1243,21 @@
   <header class="bi-header" role="banner">
     <div class="brand-group">
       <div class="brand-logo-container">
-        <img src="logo-plangecon.png" alt="PLANGECON" onerror="this.parentElement.innerHTML='<strong style=\'color:#fff;font-size:11px;font-weight:900;\'>PLANGECON</strong>'">
+        <img src="logo-plangecon.png" alt="PLANGECON" onerror="this.parentElement.innerHTML='<strong style=\'color:var(--verde-corp);font-size:13px;font-weight:900;\'>PLANGECON</strong>'">
       </div>
       <div class="brand-titles">
-        <h1>BI Analytics & Gestão de Mudança</h1>
+        <h1>BI Analytics &amp; Gestão de Mudança</h1>
         <p>
-          <span class="live-indicator"><span class="live-dot"></span> Dados Sincronizados</span>
+          <span class="live-indicator" id="headerLiveBadge">
+            <span class="live-dot"></span> Dados Sincronizados
+          </span>
           Painel de Desempenho e Eficácia da Implantação do RDO Web
         </p>
       </div>
     </div>
 
     <div class="header-controls">
-      <a href="https://plangecon-servicos.github.io/implantacao/" class="btn-header" title="Voltar para a Coleta de Dados">
+      <a href="https://plangecon-servicos.github.io/implantacao/" class="btn-header btn-form-link" title="Voltar para a Coleta de Dados">
         <svg viewBox="0 0 24 24"><path d="M11 17l-5-5m0 0l5-5m-5 5h12"/></svg>
         Formulário de Coleta
       </a>
@@ -1187,29 +1273,92 @@
        ===================================================== -->
   <main class="dashboard-wrapper">
 
+    <!-- =====================================================
+         PAINEL DE SLICERS / FILTROS SUSPENSOS INTERATIVOS
+         ===================================================== -->
+    <section class="slicer-panel" aria-label="Filtros Analíticos de Auditoria">
+      <div class="slicer-header-title">
+        <svg viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+        <span>Filtros BI</span>
+      </div>
+
+      <div class="slicers-grid">
+        
+        <!-- Dropdown 1: Contrato / Obra -->
+        <div class="slicer-field">
+          <label for="selectContrato">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Contrato / Obra:
+          </label>
+          <select id="selectContrato" aria-label="Selecione a Obra">
+            <option value="consolidado">📊 Todas as Obras (Visão Geral)</option>
+            <option value="obra61">🏗️ Obra 61</option>
+            <option value="obra43">🏗️ Obra 43</option>
+          </select>
+        </div>
+
+        <!-- Dropdown 2: PONTO FOCAL -->
+        <div class="slicer-field">
+          <label for="selectLideranca">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            PONTO FOCAL:
+          </label>
+          <select id="selectLideranca" aria-label="Selecione a Liderança">
+            <option value="consolidado">👥 Todos os Pontos Focais</option>
+            <option value="obra61">Esdras Matheus Cardoso Pinheiro (Obra 61)</option>
+            <option value="obra43">Jefersson Silva Vilas Boas (Obra 43)</option>
+          </select>
+        </div>
+
+        <!-- Dropdown 3: Data da Auditoria -->
+        <div class="slicer-field">
+          <label for="selectData">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Data da Auditoria:
+          </label>
+          <select id="selectData" aria-label="Selecione a Data">
+            <option value="consolidado">📅 Todas as Datas</option>
+            <option value="obra61">15/09/2026 (Obra 61)</option>
+            <option value="obra43">21/09/2026 (Obra 43)</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="slicer-actions">
+        <button type="button" id="btnResetPontoZero" class="btn-ponto-zero active" title="Voltar ao Visão Geral (Visão Corporativa Global)">
+          <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          Visão Geral
+        </button>
+        <div class="view-mode-badge" id="viewModeBadge">
+          <span>● Visão Geral Ativo</span>
+        </div>
+      </div>
+    </section>
+
     <!-- Barra de Contexto do Contrato -->
-    <div class="context-bar">
+    <div class="context-bar anim-fade" id="contextBar">
       <div class="context-info-items">
         <div class="info-tag">
           <span>Contrato / Obra:</span>
-          <strong>Obra 61</strong>
-          <span class="badge-chip">Ago/2026 - Set/2026</span>
+          <strong id="contextContrato">Todas as Obras (Visão Corporativa)</strong>
+          <span class="badge-chip" id="contextPeriodo">Ago/2026 - Out/2026</span>
         </div>
         <div class="info-tag">
-          <span>Liderança do Contrato:</span>
-          <strong>Esdras Matheus Cardoso Pinheiro</strong>
+          <span>PONTO FOCAL:</span>
+          <strong id="contextLideranca">Consolidado de Contratos</strong>
         </div>
         <div class="info-tag">
           <span>Data da Auditoria:</span>
-          <span class="badge-chip">15/09/2026</span>
+          <span class="badge-chip" id="contextData">Setembro / 2026</span>
         </div>
       </div>
 
       <div class="action-recommendation">
         <span style="font-size:12px; color:var(--texto-muted); font-weight:700;">Diretriz Estratégica:</span>
-        <span class="rec-badge">
+        <span class="rec-badge" id="contextDiretriz">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          Realizar Pequenos Ajustes
+          <span id="contextDiretrizTexto">Manter Expansão com Pequenos Ajustes</span>
         </span>
       </div>
     </div>
@@ -1217,7 +1366,7 @@
     <!-- =====================================================
          CARDS KPI SUPERIORES (SCORECARD EXECUTIVO)
          ===================================================== -->
-    <section class="kpi-row" aria-label="Scorecard Executivo">
+    <section class="kpi-row anim-fade" id="kpiRow" aria-label="Scorecard Executivo">
       
       <!-- Card 1: Avaliação Geral -->
       <div class="kpi-box green">
@@ -1228,10 +1377,11 @@
           </div>
         </div>
         <div class="kpi-number-row">
-          <span class="kpi-number">Satisfeito</span>
+          <span class="kpi-number" id="kpiAderenciaValor">100% Positiva</span>
+          <span class="kpi-sub" id="kpiAderenciaSub">Satisfeito a Muito Satisfeito</span>
         </div>
-        <div class="kpi-footer-note">
-          <span class="tag-success">✔ Atende plenamente</span> às premissas operacionais
+        <div class="kpi-footer-note" id="kpiAderenciaNota">
+          <span class="tag-success">✔ 100% de Aprovação</span> das lideranças operacionais
         </div>
       </div>
 
@@ -1244,11 +1394,11 @@
           </div>
         </div>
         <div class="kpi-number-row">
-          <span class="kpi-number">75%</span>
-          <span class="kpi-sub">(9 / 12 Módulos Ativos)</span>
+          <span class="kpi-number" id="kpiMaturidadeValor">79%</span>
+          <span class="kpi-sub" id="kpiMaturidadeSub">(19 / 24 Módulos Ativos)</span>
         </div>
-        <div class="kpi-footer-note">
-          <span>3 Estabilizados · 6 Implantados</span>
+        <div class="kpi-footer-note" id="kpiMaturidadeNota">
+          <span>3 Estabilizados · 16 Implantados</span>
         </div>
       </div>
 
@@ -1261,11 +1411,11 @@
           </div>
         </div>
         <div class="kpi-number-row">
-          <span class="kpi-number">8</span>
-          <span class="kpi-sub">Pontos Fortes Críticos</span>
+          <span class="kpi-number" id="kpiGanhosValor">15</span>
+          <span class="kpi-sub" id="kpiGanhosSub">Pontos Fortes Totais</span>
         </div>
-        <div class="kpi-footer-note">
-          <span>Rastreabilidade, Gestão & Indicadores</span>
+        <div class="kpi-footer-note" id="kpiGanhosNota">
+          <span>Rastreabilidade, Gestão, Histograma &amp; Indicadores</span>
         </div>
       </div>
 
@@ -1278,11 +1428,11 @@
           </div>
         </div>
         <div class="kpi-number-row">
-          <span class="kpi-number">Média</span>
-          <span class="kpi-sub" style="color:#b45309;">Prioridade</span>
+          <span class="kpi-number" id="kpiPrioridadeValor">Média</span>
+          <span class="kpi-sub" id="kpiPrioridadeSub" style="color:#b45309;">Ajuste Homologado</span>
         </div>
-        <div class="kpi-footer-note">
-          <span>Fluxo de Validação VALE / ARCADIS</span>
+        <div class="kpi-footer-note" id="kpiPrioridadeNota">
+          <span>Validações com Fiscalizações e Clientes</span>
         </div>
       </div>
 
@@ -1290,15 +1440,14 @@
 
     <!-- =====================================================
          SUMÁRIO EXECUTIVO & DIAGNÓSTICO ESTRATÉGICO
-         (SUBSTITUI O ANTIGO PARECER COM INFORMAÇÃO QUALIFICADA)
          ===================================================== -->
-    <section class="executive-summary-card">
+    <section class="executive-summary-card anim-fade" id="execSummaryCard">
       <div class="exec-summary-header">
         <h3>
           <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          Sumário Executivo & Diagnóstico da Gestão de Mudança (Obra 61)
+          <span id="execSummaryTitle">Sumário Executivo &amp; Diagnóstico da Gestão de Mudança (Visão Geral - Todas as Obras)</span>
         </h3>
-        <span class="badge-chip">Diagnóstico de Campo</span>
+        <span class="badge-chip" id="execSummaryBadge">Visão Corporativa</span>
       </div>
 
       <div class="exec-summary-grid">
@@ -1306,48 +1455,45 @@
         <!-- Coluna 1: Panorama Operacional -->
         <div class="summary-column col-success">
           <div>
-            <div class="col-title" style="color:var(--verde-corp);">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              1. Panorama Operacional & Aderência
+            <div class="col-title" style="color:var(--verde-corp);" id="sumarioCol1Titulo">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> 1. Panorama Operacional Consolidado
             </div>
-            <p class="col-text">
-              A Obra 61 alcançou <strong>75% de maturidade funcional</strong> na esteira de RDO/RDC. Os cadastros estruturais (usuários, efetivo e máquinas) encontram-se 100% estabilizados, e os apontamentos diários já alimentam gráficos analíticos e relatórios gerenciais sem dependência de planilhas manuais.
+            <p class="col-text" id="sumarioCol1Texto">
+              A esteira corporativa de RDO Web alcançou <strong>79% de maturidade média</strong> entre as obras auditadas. Cadastros de equipes e equipamentos estão consolidados, permitindo a extração de dados e gestão em tempo real sem dependência de planilhas manuais.
             </p>
           </div>
-          <div class="col-footer-badge" style="color:var(--verde-corp);">
-            Status: Base de dados padronizada e confiável
+          <div class="col-footer-badge" style="color:var(--verde-corp);" id="sumarioCol1Badge">
+            Status Corporativo: 19 de 24 módulos em operação ativa
           </div>
         </div>
 
         <!-- Coluna 2: Causa-Raiz dos Gargalos -->
         <div class="summary-column col-warning">
           <div>
-            <div class="col-title" style="color:var(--amarelo-warn);">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              2. Causa-Raiz dos Gargalos Mapeados
+            <div class="col-title" style="color:var(--amarelo-warn);" id="sumarioCol2Titulo">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> 2. Diagnóstico Comparativo de Campo
             </div>
-            <p class="col-text">
-              A percepção de lentidão relatada pelas equipes em campo foi <strong>diagnosticada e solucionada</strong>: decorreu da falta de sincronização offline prévia do aplicativo no início da jornada. Ocorrências pontuais de obras não listadas já foram parametrizadas no escopo do contrato.
+            <p class="col-text" id="sumarioCol2Texto">
+              A <strong>Obra 61</strong> solucionou a lentidão instruindo a sincronização offline prévia e tratando obras fora de escopo. Já a <strong>Obra 43</strong> atingiu índice recorde de 83% sem gargalos operacionais e com alto engajamento da equipe.
             </p>
           </div>
-          <div class="col-footer-badge" style="color:#b45309;">
-            Ação: Treinamento rápido de sincronização em campo
+          <div class="col-footer-badge" style="color:#b45309;" id="sumarioCol2Badge">
+            Ação: Padronização do procedimento de sincronização
           </div>
         </div>
 
         <!-- Coluna 3: Marco Crítico e Decisão -->
         <div class="summary-column col-action">
           <div>
-            <div class="col-title" style="color:var(--azul-corp);">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              3. Marco Crítico & Janela de Decisão
+            <div class="col-title" style="color:var(--azul-corp);" id="sumarioCol3Titulo">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 3. Diretriz Estratégica &amp; Clientes
             </div>
-            <p class="col-text">
-              Diretriz aprovada: <strong>Pequenos Ajustes</strong>. Foco imediato na janela de <strong>16/09 a 15/10</strong> para homologar o fluxo de aprovação multinível com fiscais <strong>ARCADIS</strong> e <strong>VALE</strong>, além da inserção do campo do Laudo técnico no cabeçalho do PDF do RDC para fins de medição.
+            <p class="col-text" id="sumarioCol3Texto">
+              Diretriz Global: <strong>Expansão Assistida</strong>. Entrega da customização do <strong>Laudo VALE</strong> em PDF (Obra 61) e do <strong>Histograma por função</strong> (Obra 43), assegurando aderência contratual plena aos requisitos dos clientes.
             </p>
           </div>
-          <div class="col-footer-badge" style="color:var(--azul-corp);">
-            Meta: Ativação dos 2 módulos pendentes até 15/10
+          <div class="col-footer-badge" style="color:var(--azul-corp);" id="sumarioCol3Badge">
+            Meta: 100% dos módulos em operação até final de Out/2026
           </div>
         </div>
 
@@ -1357,16 +1503,16 @@
     <!-- =====================================================
          GRID ANALÍTICO: GRÁFICO PIZZA/DONUT PROFISSIONAL + ESTEIRA
          ===================================================== -->
-    <div class="charts-main-grid">
+    <div class="charts-main-grid anim-fade" id="chartsMainGrid">
       
       <!-- Painel do Gráfico Donut com Valores Visíveis -->
       <div class="card-panel">
         <div class="card-panel-head">
           <h3>
             <svg viewBox="0 0 24 24"><path d="M21.21 15.89A10 10 0 118 2.83M22 12A10 10 0 0012 2v10z"/></svg>
-            Maturidade da Implantação dos 12 Módulos
+            <span id="chartPanelTitle">Maturidade da Implantação dos Componentes</span>
           </h3>
-          <span class="badge-chip">Valores Auditados</span>
+          <span class="badge-chip" id="chartAuditBadge">Valores Auditados</span>
         </div>
 
         <div class="card-panel-body">
@@ -1376,9 +1522,9 @@
             <div class="donut-chart-container">
               <canvas id="chartMaturidade"></canvas>
               <div class="donut-center-info">
-                <div class="donut-big-val">75%</div>
-                <div class="donut-val-label">Módulos Ativos</div>
-                <div class="donut-val-sub">9 de 12</div>
+                <div class="donut-big-val" id="donutBigVal">79%</div>
+                <div class="donut-val-label" id="donutValLabel">Módulos Ativos</div>
+                <div class="donut-val-sub" id="donutValSub">19 de 24</div>
               </div>
             </div>
 
@@ -1391,8 +1537,8 @@
                   <span>Estabilizado</span>
                 </div>
                 <div class="stat-chip-right">
-                  <span class="stat-count-badge">3 módulos</span>
-                  <span class="stat-pct-badge" style="background:#eff6ff; color:#1d4ed8;">25.0%</span>
+                  <span class="stat-count-badge" id="statEstabilizadoCount">3 módulos</span>
+                  <span class="stat-pct-badge" id="statEstabilizadoPct" style="background:#eff6ff; color:#1d4ed8;">12.5%</span>
                 </div>
               </div>
 
@@ -1402,8 +1548,8 @@
                   <span>Implantado</span>
                 </div>
                 <div class="stat-chip-right">
-                  <span class="stat-count-badge">6 módulos</span>
-                  <span class="stat-pct-badge" style="background:#ecfdf5; color:#0e633f;">50.0%</span>
+                  <span class="stat-count-badge" id="statImplantadoCount">16 módulos</span>
+                  <span class="stat-pct-badge" id="statImplantadoPct" style="background:#ecfdf5; color:#0e633f;">66.7%</span>
                 </div>
               </div>
 
@@ -1413,8 +1559,8 @@
                   <span>Em Implantação</span>
                 </div>
                 <div class="stat-chip-right">
-                  <span class="stat-count-badge">1 módulo</span>
-                  <span class="stat-pct-badge" style="background:#fef3c7; color:#b45309;">8.3%</span>
+                  <span class="stat-count-badge" id="statEmImplantacaoCount">2 módulos</span>
+                  <span class="stat-pct-badge" id="statEmImplantacaoPct" style="background:#fef3c7; color:#b45309;">8.3%</span>
                 </div>
               </div>
 
@@ -1424,8 +1570,8 @@
                   <span>Não Iniciado</span>
                 </div>
                 <div class="stat-chip-right">
-                  <span class="stat-count-badge">2 módulos</span>
-                  <span class="stat-pct-badge" style="background:#fee2e2; color:#b91c1c;">16.7%</span>
+                  <span class="stat-count-badge" id="statNaoIniciadoCount">3 módulos</span>
+                  <span class="stat-pct-badge" id="statNaoIniciadoPct" style="background:#fee2e2; color:#b91c1c;">12.5%</span>
                 </div>
               </div>
 
@@ -1435,79 +1581,19 @@
         </div>
       </div>
 
-      <!-- Painel da Esteira dos 12 Módulos Auditados -->
+      <!-- Painel da Esteira dos Módulos Auditados -->
       <div class="card-panel">
         <div class="card-panel-head">
           <h3>
             <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-            Auditoria Individual dos 12 Componentes
+            <span id="pipelinePanelTitle">Auditoria Individual dos 12 Componentes</span>
           </h3>
-          <span style="font-size:11.5px; color:var(--texto-muted); font-weight:700;">Status do Contrato</span>
+          <span style="font-size:11.5px; color:var(--texto-muted); font-weight:700;" id="pipelineSubtitle">Status do Contrato</span>
         </div>
 
         <div class="card-panel-body">
-          <div class="pipeline-grid">
-            
-            <div class="pipeline-item">
-              <span class="pipeline-name">👤 Cadastro de usuários</span>
-              <span class="status-pill pill-estabilizado">Estabilizado</span>
-            </div>
-
-            <div class="pipeline-item">
-              <span class="pipeline-name">👷 Cadastro de efetivo</span>
-              <span class="status-pill pill-estabilizado">Estabilizado</span>
-            </div>
-
-            <div class="pipeline-item">
-              <span class="pipeline-name">🚜 Cadastro de equipamentos</span>
-              <span class="status-pill pill-estabilizado">Estabilizado</span>
-            </div>
-
-            <div class="pipeline-item">
-              <span class="pipeline-name">📋 Registro das atividades</span>
-              <span class="status-pill pill-implantado">Implantado</span>
-            </div>
-
-            <div class="pipeline-item">
-              <span class="pipeline-name">⚠️ Registro de ocorrências</span>
-              <span class="status-pill pill-implantado">Implantado</span>
-            </div>
-
-            <div class="pipeline-item">
-              <span class="pipeline-name">⏱️ Registro de apontamentos</span>
-              <span class="status-pill pill-implantado">Implantado</span>
-            </div>
-
-            <div class="pipeline-item">
-              <span class="pipeline-name">📷 Anexos / evidências</span>
-              <span class="status-pill pill-implantado">Implantado</span>
-            </div>
-
-            <div class="pipeline-item">
-              <span class="pipeline-name">📊 Relatórios analíticos</span>
-              <span class="status-pill pill-implantado">Implantado</span>
-            </div>
-
-            <div class="pipeline-item">
-              <span class="pipeline-name">🔗 Integrações de dados</span>
-              <span class="status-pill pill-implantado">Implantado</span>
-            </div>
-
-            <div class="pipeline-item">
-              <span class="pipeline-name">👥 Utilização pela equipe</span>
-              <span class="status-pill pill-em-implantacao">Em implantação</span>
-            </div>
-
-            <div class="pipeline-item" style="border-left: 3px solid var(--vermelho-alert);">
-              <span class="pipeline-name">✍️ Fluxo de aprovação</span>
-              <span class="status-pill pill-nao-iniciado">Não iniciado</span>
-            </div>
-
-            <div class="pipeline-item" style="border-left: 3px solid var(--vermelho-alert);">
-              <span class="pipeline-name">🤝 Utilização pelo cliente</span>
-              <span class="status-pill pill-nao-iniciado">Não iniciado</span>
-            </div>
-
+          <div class="pipeline-grid" id="pipelineGrid">
+            <!-- Gerado dinamicamente pelo JS -->
           </div>
         </div>
       </div>
@@ -1515,16 +1601,16 @@
     </div>
 
     <!-- =====================================================
-         GRID INFERIOR: SWOT / FOFA + DEMANDAS VALE/ARCADIS
+         GRID INFERIOR: SWOT / FOFA + DEMANDAS & ROADMAP
          ===================================================== -->
-    <div class="bottom-analytics-grid">
+    <div class="bottom-analytics-grid anim-fade" id="bottomAnalyticsGrid">
 
       <!-- Matriz FOFA / SWOT Qualitativa -->
       <div class="card-panel">
         <div class="card-panel-head">
           <h3>
             <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Matriz Diagnóstica SWOT / FOFA da Obra 61
+            <span id="swotPanelTitle">Matriz Diagnóstica SWOT / FOFA</span>
           </h3>
           <span class="badge-chip">Feedback Consolidado</span>
         </div>
@@ -1537,14 +1623,11 @@
               <div class="swot-title">
                 <span>💪 Pontos Fortes (Strengths)</span>
               </div>
-              <div class="tag-container">
-                <span class="chip-tag">Padronização</span>
-                <span class="chip-tag">Rastreabilidade</span>
-                <span class="chip-tag">Menos retrabalho</span>
-                <span class="chip-tag">Geração de gráficos</span>
+              <div class="tag-container" id="swotStrengthsTags">
+                <!-- Gerado dinamicamente -->
               </div>
-              <div class="swot-comment" style="color:var(--verde-corp);">
-                "Ficou mais fácil de ver as informações que necessitamos e conseguimos criar gráficos com os dados extraídos do sistema."
+              <div class="swot-comment" style="color:var(--verde-corp);" id="swotStrengthsComment">
+                <!-- Gerado dinamicamente -->
               </div>
             </div>
 
@@ -1553,13 +1636,11 @@
               <div class="swot-title">
                 <span>⚠️ Gargalos (Weaknesses)</span>
               </div>
-              <div class="tag-container">
-                <span class="chip-tag" style="color:var(--vermelho-alert);">Lentidão no app</span>
-                <span class="chip-tag" style="color:var(--vermelho-alert);">Sincronização offline</span>
-                <span class="chip-tag" style="color:var(--vermelho-alert);">Obras fora de escopo</span>
+              <div class="tag-container" id="swotWeaknessesTags">
+                <!-- Gerado dinamicamente -->
               </div>
-              <div class="swot-comment" style="color:var(--vermelho-alert);">
-                Lentidão gerada pela falta de sincronização offline diária e cadastros pontuais de obras que não estavam previstos no escopo inicial.
+              <div class="swot-comment" style="color:var(--vermelho-alert);" id="swotWeaknessesComment">
+                <!-- Gerado dinamicamente -->
               </div>
             </div>
 
@@ -1568,13 +1649,11 @@
               <div class="swot-title">
                 <span>🚀 Oportunidades</span>
               </div>
-              <div class="tag-container">
-                <span class="chip-tag">Laudo VALE em PDF</span>
-                <span class="chip-tag">Fluxo Assinaturas</span>
-                <span class="chip-tag">Homologação Digital</span>
+              <div class="tag-container" id="swotOpportunitiesTags">
+                <!-- Gerado dinamicamente -->
               </div>
-              <div class="swot-comment" style="color:var(--azul-corp);">
-                Atendimento do requisito do cliente com inserção do campo do Laudo técnico no cabeçalho do RDC em PDF.
+              <div class="swot-comment" style="color:var(--azul-corp);" id="swotOpportunitiesComment">
+                <!-- Gerado dinamicamente -->
               </div>
             </div>
 
@@ -1583,12 +1662,11 @@
               <div class="swot-title">
                 <span>🛡️ Riscos a Mitigar</span>
               </div>
-              <div class="tag-container">
-                <span class="chip-tag">Atraso em medições</span>
-                <span class="chip-tag">Aprovação de fiscais</span>
+              <div class="tag-container" id="swotThreatsTags">
+                <!-- Gerado dinamicamente -->
               </div>
-              <div class="swot-comment" style="color:#b45309;">
-                Necessidade de rodar o fluxo formal de aprovação conjuntamente com a fiscalização no período de 16/09 a 15/10.
+              <div class="swot-comment" style="color:#b45309;" id="swotThreatsComment">
+                <!-- Gerado dinamicamente -->
               </div>
             </div>
 
@@ -1596,56 +1674,30 @@
         </div>
       </div>
 
-      <!-- Demandas de Clientes (VALE / ARCADIS) & Roadmap -->
+      <!-- Demandas de Clientes & Roadmap -->
       <div class="card-panel">
         <div class="card-panel-head">
           <h3>
             <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            Requisitos de Clientes & Roadmap de Implantação
+            <span id="demandasPanelTitle">Requisitos de Clientes &amp; Roadmap de Implantação</span>
           </h3>
-          <span class="badge-chip">Janela: 16/09 a 15/10</span>
+          <span class="badge-chip" id="demandasBadge">Janela Ativa</span>
         </div>
 
         <div class="card-panel-body">
           
-          <!-- Card de Demanda da VALE -->
-          <div class="client-spec-card">
-            <div class="client-spec-top">
-              <span class="client-spec-title">Exibição de LAUDO (Projeto) no Cabeçalho do RDC</span>
-              <span class="client-tag">Cliente: VALE</span>
-            </div>
-            <p style="font-size:12px; color:#475569; line-height:1.5;">
-              A VALE solicitou formalmente a integração do campo do LAUDO técnico para que apareça em destaque no cabeçalho do documento PDF para efeito de aceite de medição contratual.
-            </p>
-            <div class="client-spec-meta">
-              <span>Prioridade: <strong style="color:var(--amarelo-warn);">Média</strong></span>
-              <span>Impacto: <strong style="color:var(--azul-corp);">Médio</strong></span>
-              <span>Requisito: Layout de Exportação</span>
-            </div>
+          <!-- Container de Demandas dos Clientes -->
+          <div id="clientDemandasContainer">
+            <!-- Gerado dinamicamente -->
           </div>
 
           <!-- Linha do Tempo / Roadmap -->
           <h4 style="font-size:12.5px; font-weight:800; color:var(--texto-main); margin-bottom:12px;">
-            Plano de Ação Crítico (Próximos 30 Dias):
+            Plano de Ação Crítico:
           </h4>
 
-          <div class="timeline-container">
-            
-            <div class="timeline-node done">
-              <div class="node-title">1. Saneamento dos Cadastros e Instrução do App</div>
-              <div class="node-desc">Inclusão das frentes de serviço no sistema e orientação de sincronização diária do app.</div>
-            </div>
-
-            <div class="timeline-node done">
-              <div class="node-title">2. Criação do Fluxo de Assinaturas Digitais</div>
-              <div class="node-desc">Estruturação da cadeia: Encarregados ➔ Supervisores ➔ Fiscais ARCADIS e VALE.</div>
-            </div>
-
-            <div class="timeline-node">
-              <div class="node-title">3. Operação Assistida e Adoção Integral pelo Cliente</div>
-              <div class="node-desc">Período de 16/09 a 15/10: virada de chave para aprovação dos relatórios diretamente no sistema.</div>
-            </div>
-
+          <div class="timeline-container" id="roadmapContainer">
+            <!-- Gerado dinamicamente -->
           </div>
 
         </div>
@@ -1655,239 +1707,638 @@
 
   </main>
 
-<!-- =====================================================
-     RODAPÉ INSTITUCIONAL CORPORATIVO
-     ===================================================== -->
+  <!-- =====================================================
+       RODAPÉ INSTITUCIONAL CORPORATIVO
+       ===================================================== -->
+  <footer class="app-corporate-footer" role="contentinfo">
+    <div class="footer-inner">
 
-<footer
-  class="app-corporate-footer"
-  role="contentinfo"
->
-
-  <div class="footer-inner">
-
-    <!-- =================================================
-         COLUNA DA MARCA
-         ================================================= -->
-
-    <div class="footer-brand-col">
-
-      <div class="footer-logo-wrap">
-
-        <img
-          src="logo-plangecon.png"
-          alt="PLANGECON"
-          onerror="
-            this.parentElement.innerHTML =
-            '<strong style=&quot;color:var(--verde-primary);font-size:13px;font-weight:900;&quot;>PLANGECON</strong>'
-          "
-        />
-
+      <!-- Coluna da Marca -->
+      <div class="footer-brand-col">
+        <div class="footer-logo-wrap">
+          <img
+            src="logo-plangecon.png"
+            alt="PLANGECON"
+            onerror="this.parentElement.innerHTML='<strong style=\'color:var(--verde-corp);font-size:13px;font-weight:900;\'>PLANGECON</strong>'"
+          />
+        </div>
+        <p class="footer-desc">
+          Setor de Planejamento e Controle
+        </p>
+        <div class="footer-copyright">
+          © 2026 PLANGECON SERVIÇOS INDUSTRIAIS · Todos os direitos reservados.
+        </div>
       </div>
 
-      <p class="footer-desc">
-        Setor de Planejamento e Controle
-      </p>
+      <!-- Atendimento -->
+      <div class="footer-info-col">
+        <h4 class="footer-col-title">
+          Atendimento &amp; Contato
+        </h4>
+        <ul class="footer-contact-list">
+          <li>
+            <svg viewBox="0 0 24 24">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            <div>
+              <span class="footer-item-label">
+                Medição / Contratos:
+              </span>
+              <a href="mailto:medicao@plangecon.com.br" class="footer-contact-link">
+                medicao@plangecon.com.br
+              </a>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+            <div>
+              <span class="footer-item-label">
+                Telefone:
+              </span>
+              <a href="tel:+559433466682" class="footer-contact-link">
+                Tel: (94) 3346-6682
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
 
-      <div class="footer-copyright">
-        © 2026 PLANGECON SERVIÇOS INDUSTRIAIS · Todos os direitos reservados.
+      <!-- Horário e Localização -->
+      <div class="footer-info-col">
+        <h4 class="footer-col-title">
+          Horário &amp; Localização
+        </h4>
+        <ul class="footer-contact-list">
+          <li>
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+            <div>
+              <span class="footer-item-label">
+                Horário de Atendimento:
+              </span>
+              <span class="footer-contact-text">
+                Seg – Sex: 08:00 – 18:00
+              </span>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            <div>
+              <span class="footer-item-label">
+                Endereço:
+              </span>
+              <address class="footer-contact-text" style="font-style:normal;">
+                Rua A, 119 - Cidade Nova, Parauapebas - PA, 68515-000
+              </address>
+            </div>
+          </li>
+        </ul>
       </div>
 
     </div>
-
-
-    <!-- =================================================
-         ATENDIMENTO
-         ================================================= -->
-
-    <div class="footer-info-col">
-
-      <h4 class="footer-col-title">
-        Atendimento &amp; Contato
-      </h4>
-
-      <ul class="footer-contact-list">
-
-        <li>
-
-          <svg viewBox="0 0 24 24">
-
-            <path
-              d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-            />
-
-            <polyline
-              points="22,6 12,13 2,6"
-            />
-
-          </svg>
-
-          <div>
-
-            <span class="footer-item-label">
-              Medição / Contratos:
-            </span>
-
-            <a
-              href="mailto:medicao@plangecon.com.br"
-              class="footer-contact-link"
-            >
-              medicao@plangecon.com.br
-            </a>
-
-          </div>
-
-        </li>
-
-
-        <li>
-
-          <svg viewBox="0 0 24 24">
-
-            <path
-              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
-            />
-
-          </svg>
-
-          <div>
-
-            <span class="footer-item-label">
-              Telefone:
-            </span>
-
-            <a
-              href="tel:+559433466682"
-              class="footer-contact-link"
-            >
-              Tel: (94) 3346-6682
-            </a>
-
-          </div>
-
-        </li>
-
-      </ul>
-
-    </div>
-
-
-    <!-- =================================================
-         HORÁRIO E LOCALIZAÇÃO
-         ================================================= -->
-
-    <div class="footer-info-col">
-
-      <h4 class="footer-col-title">
-        Horário &amp; Localização
-      </h4>
-
-      <ul class="footer-contact-list">
-
-        <li>
-
-          <svg viewBox="0 0 24 24">
-
-            <circle
-              cx="12"
-              cy="12"
-              r="10"
-            />
-
-            <polyline
-              points="12 6 12 12 16 14"
-            />
-
-          </svg>
-
-          <div>
-
-            <span class="footer-item-label">
-              Horário de Atendimento:
-            </span>
-
-            <span class="footer-contact-text">
-              Seg – Sex: 08:00 – 18:00
-            </span>
-
-          </div>
-
-        </li>
-
-
-        <li>
-
-          <svg viewBox="0 0 24 24">
-
-            <path
-              d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
-            />
-
-            <circle
-              cx="12"
-              cy="10"
-              r="3"
-            />
-
-          </svg>
-
-          <div>
-
-            <span class="footer-item-label">
-              Endereço:
-            </span>
-
-            <address
-              class="footer-contact-text"
-              style="font-style:normal;"
-            >
-              Rua A, 119 - Cidade Nova, Parauapebas - PA, 68515-000
-            </address>
-
-          </div>
-
-        </li>
-
-      </ul>
-
-    </div>
-
-  </div>
-
-</footer>
+  </footer>
 
   <!-- =====================================================
-       SCRIPT CHART.JS COM PLUGIN DATALABELS & TOOLTIPS
+       MOTOR JAVASCRIPT: BASES DE DADOS E DINÂMICA INTERATIVA
        ===================================================== -->
   <script>
     'use strict';
 
+    /* =====================================================
+       BASE DE CONHECIMENTO INTEGRADA (OBRA 61, OBRA 43 & CONSOLIDADO)
+       ===================================================== */
+    const BANCO_DE_DADOS = {
+      consolidado: {
+        id: "consolidado",
+        contrato: "Todas as Obras (Visão Corporativa)",
+        contratoCurto: "Visão Geral",
+        lideranca: "Consolidado de Contratos",
+        data: "Setembro / 2026",
+        periodo: "Ago/2026 - Out/2026",
+        diretriz: "Manter Expansão com Pequenos Ajustes",
+        diretrizClasse: "rec-badge",
+        aderenciaValor: "100% Positiva",
+        aderenciaSub: "Satisfeito a Muito Satisfeito",
+        aderenciaNota: "<span class='tag-success'>✔ 100% de Aprovação</span> das lideranças operacionais",
+        maturidadePct: 79,
+        maturidadeSub: "(19 / 24 Módulos Ativos)",
+        maturidadeNota: "<span>3 Estabilizados · 16 Implantados</span>",
+        donutVal: "79%",
+        donutSub: "19 de 24 Ativos",
+        donutLabel: "Módulos Ativos",
+        modulosCounts: { estabilizado: 3, implantado: 16, emImplantacao: 2, naoIniciado: 3, total: 24 },
+        modulosPcts: { estabilizado: "12.5%", implantado: "66.7%", emImplantacao: "8.3%", naoIniciado: "12.5%" },
+        ganhosValor: "15",
+        ganhosSub: "Pontos Fortes Totais",
+        ganhosNota: "<span>Rastreabilidade, Gestão, Histograma &amp; Indicadores</span>",
+        prioridadeValor: "Média",
+        prioridadeSub: "Ajuste Homologado",
+        prioridadeNota: "<span>Validações com Fiscalizações e Clientes</span>",
+        sumarioBadge: "Visão Corporativa",
+        sumario: {
+          titulo: "Sumário Executivo & Diagnóstico da Gestão de Mudança (Visão Geral - Todas as Obras)",
+          col1Titulo: "1. Panorama Operacional Consolidado",
+          col1Texto: "A esteira corporativa de RDO Web alcançou <strong>79% de maturidade média</strong> entre as obras auditadas. Cadastros de equipes e equipamentos estão consolidados, permitindo a extração de dados e gestão em tempo real sem dependência de planilhas manuais.",
+          col1Badge: "Status Corporativo: 19 de 24 módulos em operação ativa",
+          col2Titulo: "2. Diagnóstico Comparativo de Campo",
+          col2Texto: "A <strong>Obra 61</strong> solucionou a lentidão instruindo a sincronização offline prévia e tratando obras fora de escopo. Já a <strong>Obra 43</strong> atingiu índice recorde de 83% sem gargalos operacionais e com alto engajamento da equipe.",
+          col2Badge: "Ação: Padronização do procedimento de sincronização",
+          col3Titulo: "3. Diretriz Estratégica & Clientes",
+          col3Texto: "Diretriz Global: <strong>Expansão Assistida</strong>. Entrega da customização do <strong>Laudo VALE</strong> em PDF (Obra 61) e do <strong>Histograma por função</strong> (Obra 43), assegurando aderência contratual plena aos requisitos dos clientes.",
+          col3Badge: "Meta: 100% dos módulos em operação até final de Out/2026"
+        },
+        pipeline: [
+          { nome: "👤 Cadastro de usuários", status: "Estabilizado", statusClass: "pill-estabilizado", note: "Obra 61: Estabilizado | Obra 43: Implantado" },
+          { nome: "👷 Cadastro de efetivo", status: "Estabilizado", statusClass: "pill-estabilizado", note: "Obra 61: Estabilizado | Obra 43: Implantado" },
+          { nome: "🚜 Cadastro de equipamentos", status: "Estabilizado", statusClass: "pill-estabilizado", note: "Obra 61: Estabilizado | Obra 43: Implantado" },
+          { nome: "📋 Registro das atividades", status: "Implantado", statusClass: "pill-implantado", note: "Ambas as obras em uso operacional diário" },
+          { nome: "⚠️ Registro de ocorrências", status: "Implantado", statusClass: "pill-implantado", note: "Registro ativo nas duas frentes de serviço" },
+          { nome: "⏱️ Registro de apontamentos", status: "Implantado", statusClass: "pill-implantado", note: "Alimentando medições e histogramas analíticos" },
+          { nome: "📷 Anexos / evidências", status: "Implantado", statusClass: "pill-implantado", note: "Relatórios fotográficos integrados aos RDCs" },
+          { nome: "📊 Relatórios analíticos", status: "Implantado", statusClass: "pill-implantado", note: "Geração de gráficos e indicadores gerenciais" },
+          { nome: "🔗 Integrações de dados", status: "Implantado", statusClass: "pill-implantado", note: "Padronização e rastreabilidade total de dados" },
+          { nome: "👥 Utilização pela equipe", status: "Em implantação", statusClass: "pill-em-implantacao", note: "Treinamento e engajamento contínuo em campo" },
+          { nome: "✍️ Fluxo de aprovação", status: "Em implantação", statusClass: "pill-em-implantacao", note: "Obra 43: Implantado | Obra 61: Em homologação" },
+          { nome: "🤝 Utilização pelo cliente", status: "Não iniciado", statusClass: "pill-nao-iniciado", note: "Fase de operação assistida e virada de chave" }
+        ],
+        swot: {
+          strengthsTags: ["Padronização", "Rastreabilidade", "Sem Retrabalho", "Gráficos Dinâmicos", "Agilidade", "Histograma Ativo"],
+          strengthsComment: '"O sistema proporciona maior organização, clareza no registro das informações e geração de gráficos rápidos para gestão e conferência."',
+          weaknessesTags: ["Sincronização Offline", "Lentidão Inicial", "Obras fora do Escopo"],
+          weaknessesComment: "Gargalos pontuais já mapeados na Obra 61 vinculados à disciplina de sincronização diária do app no início do turno.",
+          opportunitiesTags: ["Laudo VALE em PDF", "Histograma por Função", "Fluxo Digital ARCADIS/VALE"],
+          opportunitiesComment: "Customizações sob demanda de clientes agregam alto valor técnico e facilitam a aprovação de medições contratuais.",
+          threatsTags: ["Prazo de Homologação", "Resistência de Fiscais"],
+          threatsComment: "Necessidade de alinhar a cadeia de aprovação com os fiscais de clientes durante a virada de chave operacional."
+        },
+        demandas: [
+          {
+            cliente: "VALE",
+            titulo: "Exibição de LAUDO (Projeto) no Cabeçalho do RDC",
+            desc: "A VALE solicitou formalmente a integração do campo do LAUDO técnico em destaque no cabeçalho do documento PDF para efeito de aceite de medição contratual.",
+            prio: "Média",
+            imp: "Médio",
+            req: "Layout de Exportação (Obra 61)"
+          },
+          {
+            cliente: "CLIENTE / FISCALIZAÇÃO",
+            titulo: "Conferência de Histograma de Mão de Obra por Função",
+            desc: "Implementação e validação do campo de histograma para conferência rápida de efetivo por função/especialidade, otimizando o fechamento das medições da Obra 43.",
+            prio: "Atendida",
+            imp: "Alto",
+            req: "Efetivo & Medição (Obra 43)"
+          }
+        ],
+        roadmap: [
+          { num: "1. Saneamento e Instrução do App", desc: "Padronização de frentes e rotina de sincronização diária nos contratos.", done: true },
+          { num: "2. Customizações dos Clientes (Laudo e Histograma)", desc: "Layout de PDF com laudo (VALE) e histograma de efetivo operacional.", done: true },
+          { num: "3. Homologação com Fiscais & Operação Assistida", desc: "Período de 16/09 a 30/10: virada de chave para aprovação dos relatórios diretamente no sistema.", done: false }
+        ]
+      },
+
+      obra61: {
+        id: "obra61",
+        contrato: "Obra 61",
+        contratoCurto: "Obra 61",
+        lideranca: "Esdras Matheus Cardoso Pinheiro",
+        data: "15/09/2026",
+        periodo: "Ago/2026 - Set/2026",
+        diretriz: "Realizar Pequenos Ajustes",
+        diretrizClasse: "rec-badge",
+        aderenciaValor: "Satisfeito",
+        aderenciaSub: "Nota de Aderência",
+        aderenciaNota: "<span class='tag-success'>✔ Atende plenamente</span> às premissas operacionais",
+        maturidadePct: 75,
+        maturidadeSub: "(9 / 12 Módulos Ativos)",
+        maturidadeNota: "<span>3 Estabilizados · 6 Implantados</span>",
+        donutVal: "75%",
+        donutSub: "9 de 12 Ativos",
+        donutLabel: "Módulos Ativos",
+        modulosCounts: { estabilizado: 3, implantado: 6, emImplantacao: 1, naoIniciado: 2, total: 12 },
+        modulosPcts: { estabilizado: "25.0%", implantado: "50.0%", emImplantacao: "8.3%", naoIniciado: "16.7%" },
+        ganhosValor: "8",
+        ganhosSub: "Pontos Fortes Críticos",
+        ganhosNota: "<span>Rastreabilidade, Gestão &amp; Indicadores</span>",
+        prioridadeValor: "Média",
+        prioridadeSub: "Prioridade de Ajuste",
+        prioridadeNota: "<span>Fluxo de Validação VALE / ARCADIS</span>",
+        sumarioBadge: "Diagnóstico de Campo",
+        sumario: {
+          titulo: "Sumário Executivo & Diagnóstico da Gestão de Mudança (Obra 61)",
+          col1Titulo: "1. Panorama Operacional & Aderência",
+          col1Texto: "A Obra 61 alcançou <strong>75% de maturidade funcional</strong> na esteira de RDO/RDC. Os cadastros estruturais (usuários, efetivo e máquinas) encontram-se 100% estabilizados, e os apontamentos diários já alimentam gráficos analíticos e relatórios gerenciais sem dependência de planilhas manuais.",
+          col1Badge: "Status: Base de dados padronizada e confiável",
+          col2Titulo: "2. Causa-Raiz dos Gargalos Mapeados",
+          col2Texto: "A percepção de lentidão relatada pelas equipes em campo foi <strong>diagnosticada e solucionada</strong>: decorreu da falta de sincronização offline prévia do aplicativo no início da jornada. Ocorrências pontuais de obras não listadas já foram parametrizadas no escopo do contrato.",
+          col2Badge: "Ação: Treinamento rápido de sincronização em campo",
+          col3Titulo: "3. Marco Crítico & Janela de Decisão",
+          col3Texto: "Diretriz aprovada: <strong>Pequenos Ajustes</strong>. Foco imediato na janela de <strong>16/09 a 15/10</strong> para homologar o fluxo de aprovação multinível com fiscais <strong>ARCADIS</strong> e <strong>VALE</strong>, além da inserção do campo do Laudo técnico no cabeçalho do PDF do RDC para fins de medição.",
+          col3Badge: "Meta: Ativação dos 2 módulos pendentes até 15/10"
+        },
+        pipeline: [
+          { nome: "👤 Cadastro de usuários", status: "Estabilizado", statusClass: "pill-estabilizado", note: "100% padronizado no sistema" },
+          { nome: "👷 Cadastro de efetivo", status: "Estabilizado", statusClass: "pill-estabilizado", note: "Efetivo operacional cadastrado" },
+          { nome: "🚜 Cadastro de equipamentos", status: "Estabilizado", statusClass: "pill-estabilizado", note: "Maquinários e frotas mapeados" },
+          { nome: "📋 Registro das atividades", status: "Implantado", statusClass: "pill-implantado", note: "Lançamento diário em campo" },
+          { nome: "⚠️ Registro de ocorrências", status: "Implantado", statusClass: "pill-implantado", note: "Controle de desvios e paralisações" },
+          { nome: "⏱️ Registro de apontamentos", status: "Implantado", statusClass: "pill-implantado", note: "Apontamentos com rastreabilidade" },
+          { nome: "📷 Anexos / evidências", status: "Implantado", statusClass: "pill-implantado", note: "Registro fotográfico da obra" },
+          { nome: "📊 Relatórios analíticos", status: "Implantado", statusClass: "pill-implantado", note: "Geração de gráficos gerenciais" },
+          { nome: "🔗 Integrações de dados", status: "Implantado", statusClass: "pill-implantado", note: "Sincronização entre módulos" },
+          { nome: "👥 Utilização pela equipe", status: "Em implantação", statusClass: "pill-em-implantacao", note: "Ajuste na rotina de sincronização" },
+          { nome: "✍️ Fluxo de aprovação", status: "Não iniciado", statusClass: "pill-nao-iniciado", note: "Aguardando fluxo ARCADIS/VALE" },
+          { nome: "🤝 Utilização pelo cliente", status: "Não iniciado", statusClass: "pill-nao-iniciado", note: "Janela de operação assistida até 15/10" }
+        ],
+        swot: {
+          strengthsTags: ["Padronização", "Rastreabilidade", "Menos retrabalho", "Geração de gráficos"],
+          strengthsComment: '"Ficou mais fácil de ver as informações que necessitamos e conseguimos criar gráficos com os dados extraídos do sistema."',
+          weaknessesTags: ["Lentidão no app", "Sincronização offline", "Obras fora de escopo"],
+          weaknessesComment: "Lentidão gerada pela falta de sincronização offline diária e cadastros pontuais de obras que não estavam previstos no escopo inicial.",
+          opportunitiesTags: ["Laudo VALE em PDF", "Fluxo Assinaturas", "Homologação Digital"],
+          opportunitiesComment: "Atendimento do requisito do cliente com inserção do campo do Laudo técnico no cabeçalho do RDC em PDF.",
+          threatsTags: ["Atraso em medições", "Aprovação de fiscais"],
+          threatsComment: "Necessidade de rodar o fluxo formal de aprovação conjuntamente com a fiscalização no período de 16/09 a 15/10."
+        },
+        demandas: [
+          {
+            cliente: "VALE",
+            titulo: "Exibição de LAUDO (Projeto) no Cabeçalho do RDC",
+            desc: "A VALE solicitou formalmente a integração do campo do LAUDO técnico para que apareça em destaque no cabeçalho do documento PDF para efeito de aceite de medição contratual.",
+            prio: "Média",
+            imp: "Médio",
+            req: "Layout de Exportação"
+          }
+        ],
+        roadmap: [
+          { num: "1. Saneamento dos Cadastros e Instrução do App", desc: "Inclusão das frentes de serviço no sistema e orientação de sincronização diária do app.", done: true },
+          { num: "2. Criação do Fluxo de Assinaturas Digitais", desc: "Estruturação da cadeia: Encarregados ➔ Supervisores ➔ Fiscais ARCADIS e VALE.", done: true },
+          { num: "3. Operação Assistida e Adoção Integral pelo Cliente", desc: "Período de 16/09 a 15/10: virada de chave para aprovação dos relatórios diretamente no sistema.", done: false }
+        ]
+      },
+
+      obra43: {
+        id: "obra43",
+        contrato: "Obra 43",
+        contratoCurto: "Obra 43",
+        lideranca: "Jefersson Silva Vilas Boas",
+        data: "21/09/2026",
+        periodo: "Set/2026 - Out/2026",
+        diretriz: "Aprovado sem Restrições",
+        diretrizClasse: "rec-badge",
+        aderenciaValor: "Muito Satisfeito",
+        aderenciaSub: "Nota de Aderência",
+        aderenciaNota: "<span class='tag-success'>✔ 100% Aprovado</span> · Nenhuma retificação necessária",
+        maturidadePct: 83,
+        maturidadeSub: "(10 / 12 Módulos Ativos)",
+        maturidadeNota: "<span>0 Estabilizados · 10 Implantados</span>",
+        donutVal: "83%",
+        donutSub: "10 de 12 Ativos",
+        donutLabel: "Módulos Ativos",
+        modulosCounts: { estabilizado: 0, implantado: 10, emImplantacao: 1, naoIniciado: 1, total: 12 },
+        modulosPcts: { estabilizado: "0.0%", implantado: "83.3%", emImplantacao: "8.3%", naoIniciado: "8.3%" },
+        ganhosValor: "7",
+        ganhosSub: "Ganhos em Destaque",
+        ganhosNota: "<span>Qualidade, Agilidade, Controle &amp; Histograma</span>",
+        prioridadeValor: "Baixa",
+        prioridadeSub: "Prioridade de Ajuste",
+        prioridadeNota: "<span>Sistema em Plena Conformidade</span>",
+        sumarioBadge: "Alta Conformidade",
+        sumario: {
+          titulo: "Sumário Executivo & Diagnóstico da Gestão de Mudança (Obra 43)",
+          col1Titulo: "1. Panorama Operacional & Aderência",
+          col1Texto: "A Obra 43 atingiu <strong>83.3% de maturidade</strong> com 10 módulos já implantados e operantes. O fluxo de aprovação encontra-se plenamente ativo e a liderança avaliou a implantação como <strong>Muito Satisfeita</strong>, destacando a organização e clareza nos registros.",
+          col1Badge: "Status: Operação madura e aprovada pela liderança",
+          col2Titulo: "2. Gaps e Retificações",
+          col2Texto: "Não foram identificados gargalos técnicos ou de usabilidade: <strong>nenhuma fraqueza ou retificação</strong> foi apontada. O processo de apontamento flui com alta rastreabilidade e sem retrabalho na rotina da obra.",
+          col2Badge: "Ação: Sustentação do modelo e boas práticas",
+          col3Titulo: "3. Diferencial Técnico: Histograma",
+          col3Texto: "Implementação bem-sucedida do <strong>campo de histograma de mão de obra</strong>, permitindo conferência e conciliação por função de acordo com as exigências de medição do cliente, agilizando o aceite contratual.",
+          col3Badge: "Meta: Transição da equipe e cliente para 100% ativo"
+        },
+        pipeline: [
+          { nome: "👤 Cadastro de usuários", status: "Implantado", statusClass: "pill-implantado", note: "Usuários ativos no sistema" },
+          { nome: "👷 Cadastro de efetivo", status: "Implantado", statusClass: "pill-implantado", note: "Mão de obra direta e indireta" },
+          { nome: "🚜 Cadastro de equipamentos", status: "Implantado", statusClass: "pill-implantado", note: "Equipamentos em operação" },
+          { nome: "📋 Registro das atividades", status: "Implantado", statusClass: "pill-implantado", note: "Apontamento contínuo" },
+          { nome: "⚠️ Registro de ocorrências", status: "Implantado", statusClass: "pill-implantado", note: "Controle diário de eventos" },
+          { nome: "⏱️ Registro de apontamentos", status: "Implantado", statusClass: "pill-implantado", note: "Alta precisão de registros" },
+          { nome: "✍️ Fluxo de aprovação", status: "Implantado", statusClass: "pill-implantado", note: "Cadeia de assinaturas operante" },
+          { nome: "📷 Anexos / evidências", status: "Implantado", statusClass: "pill-implantado", note: "Evidências anexadas regularmente" },
+          { nome: "📊 Relatórios analíticos", status: "Implantado", statusClass: "pill-implantado", note: "Relatórios de fechamento em uso" },
+          { nome: "🔗 Integrações de dados", status: "Implantado", statusClass: "pill-implantado", note: "Integração plena dos módulos" },
+          { nome: "👥 Utilização pela equipe", status: "Em implantação", statusClass: "pill-em-implantacao", note: "Adoção contínua pelo time" },
+          { nome: "🤝 Utilização pelo cliente", status: "Não iniciado", statusClass: "pill-nao-iniciado", note: "Planejado para fechamento de ciclo" }
+        ],
+        swot: {
+          strengthsTags: ["Alta Qualidade", "Rastreabilidade", "Sem Retrabalho", "Agilidade", "Controle Total", "Histograma Ativo"],
+          strengthsComment: '"O novo modelo de RDO atende plenamente às necessidades do contrato, proporcionando maior organização, padronização e clareza no registro das informações."',
+          weaknessesTags: ["Sem Gargalos Reportados"],
+          weaknessesComment: "Nenhuma fraqueza ou bloqueio técnico apontado pela liderança da Obra 43 na auditoria.",
+          opportunitiesTags: ["Histograma por Função", "Conferência Imediata", "Aprovação sem Glosas"],
+          opportunitiesComment: "Campo de histograma que facilita a conferência por função de acordo com o solicitado pelo cliente.",
+          threatsTags: ["Engajamento do Cliente"],
+          threatsComment: "Concluir a transição da utilização pela equipe de campo e formalização de aceite final do cliente."
+        },
+        demandas: [
+          {
+            cliente: "CLIENTE / FISCALIZAÇÃO",
+            titulo: "Histograma de Mão de Obra por Função",
+            desc: "Inclusão do campo de histograma atendendo solicitação específica do cliente, permitindo conferência e auditoria de efetivo por função no momento da medição.",
+            prio: "Atendida",
+            imp: "Alto",
+            req: "Acompanhamento Contratual"
+          }
+        ],
+        roadmap: [
+          { num: "1. Implantação dos 10 Módulos Operacionais", desc: "Cadastros, apontamentos, relatórios e fluxo de aprovação implantados.", done: true },
+          { num: "2. Parametrização do Histograma por Função", desc: "Atendimento da premissa de conferência do cliente no fechamento diário.", done: true },
+          { num: "3. Transição da Utilização pelo Cliente", desc: "Acompanhamento do uso assistido junto à fiscalização para aceite digital.", done: false }
+        ]
+      }
+    };
+
+    let chartMaturidadeInstancia = null;
+    let chaveAtivaAtual = "consolidado";
+
+    /* =====================================================
+       INICIALIZAÇÃO DO DASHBOARD
+       ===================================================== */
     document.addEventListener('DOMContentLoaded', () => {
-      renderizarDonutComDatalabels();
+      inicializarGraficoDonut();
+      configurarEventosSlicers();
+      aplicarVisualizacao('consolidado', false);
     });
 
-    function renderizarDonutComDatalabels() {
+    /* =====================================================
+       CONFIGURAÇÃO DOS DROPDOWNS E FILTROS SINCRONIZADOS
+       ===================================================== */
+    function configurarEventosSlicers() {
+      const selContrato = document.getElementById('selectContrato');
+      const selLideranca = document.getElementById('selectLideranca');
+      const selData = document.getElementById('selectData');
+      const btnReset = document.getElementById('btnResetPontoZero');
+
+      function sincronizarEFiltro(chave) {
+        selContrato.value = chave;
+        selLideranca.value = chave;
+        selData.value = chave;
+        aplicarVisualizacao(chave, true);
+      }
+
+      selContrato.addEventListener('change', (e) => {
+        sincronizarEFiltro(e.target.value);
+      });
+
+      selLideranca.addEventListener('change', (e) => {
+        sincronizarEFiltro(e.target.value);
+      });
+
+      selData.addEventListener('change', (e) => {
+        sincronizarEFiltro(e.target.value);
+      });
+
+      btnReset.addEventListener('click', () => {
+        sincronizarEFiltro('consolidado');
+      });
+    }
+
+    /* =====================================================
+       RENDERIZAÇÃO DINÂMICA COM TRANSIÇÕES ANIMADAS
+       ===================================================== */
+    function aplicarVisualizacao(chave, animar = true) {
+      const dados = BANCO_DE_DADOS[chave] || BANCO_DE_DADOS.consolidado;
+      chaveAtivaAtual = chave;
+
+      const elementosAnimados = [
+        document.getElementById('contextBar'),
+        document.getElementById('kpiRow'),
+        document.getElementById('execSummaryCard'),
+        document.getElementById('chartsMainGrid'),
+        document.getElementById('bottomAnalyticsGrid')
+      ];
+
+      // Atualiza botões e badges de controle
+      const btnReset = document.getElementById('btnResetPontoZero');
+      const viewBadge = document.getElementById('viewModeBadge');
+      const liveBadge = document.getElementById('headerLiveBadge');
+
+      if (chave === 'consolidado') {
+        btnReset.classList.add('active');
+        viewBadge.innerHTML = "<span>● Sem Filtro</span>";
+        viewBadge.style.background = "#eef2ff";
+        viewBadge.style.color = "#4338ca";
+        viewBadge.style.borderColor = "#c7d2fe";
+        liveBadge.innerHTML = '<span class="live-dot"></span> Dados Sincronizados (2 Obras)';
+      } else {
+        btnReset.classList.remove('active');
+        viewBadge.innerHTML = `<span>● Filtrado: ${dados.contratoCurto}</span>`;
+        viewBadge.style.background = "#ecfdf5";
+        viewBadge.style.color = "#065f46";
+        viewBadge.style.borderColor = "#a7f3d0";
+        liveBadge.innerHTML = `<span class="live-dot"></span> Dados: ${dados.contratoCurto}`;
+      }
+
+      if (animar) {
+        elementosAnimados.forEach(el => el.classList.add('anim-updating'));
+      }
+
+      setTimeout(() => {
+        // 1. Barra de Contexto
+        document.getElementById('contextContrato').textContent = dados.contrato;
+        document.getElementById('contextPeriodo').textContent = dados.periodo;
+        document.getElementById('contextLideranca').textContent = dados.lideranca;
+        document.getElementById('contextData').textContent = dados.data;
+        document.getElementById('contextDiretrizTexto').textContent = dados.diretriz;
+
+        // 2. KPIs
+        document.getElementById('kpiAderenciaValor').textContent = dados.aderenciaValor;
+        document.getElementById('kpiAderenciaSub').textContent = dados.aderenciaSub;
+        document.getElementById('kpiAderenciaNota').innerHTML = dados.aderenciaNota;
+
+        document.getElementById('kpiMaturidadeValor').textContent = `${dados.maturidadePct}%`;
+        document.getElementById('kpiMaturidadeSub').textContent = dados.maturidadeSub;
+        document.getElementById('kpiMaturidadeNota').innerHTML = dados.maturidadeNota;
+
+        document.getElementById('kpiGanhosValor').textContent = dados.ganhosValor;
+        document.getElementById('kpiGanhosSub').textContent = dados.ganhosSub;
+        document.getElementById('kpiGanhosNota').innerHTML = dados.ganhosNota;
+
+        document.getElementById('kpiPrioridadeValor').textContent = dados.prioridadeValor;
+        document.getElementById('kpiPrioridadeSub').textContent = dados.prioridadeSub;
+        document.getElementById('kpiPrioridadeNota').innerHTML = dados.prioridadeNota;
+
+        // 3. Sumário Executivo
+        document.getElementById('execSummaryTitle').textContent = dados.sumario.titulo;
+        document.getElementById('execSummaryBadge').textContent = dados.sumarioBadge;
+        document.getElementById('sumarioCol1Titulo').innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> ${dados.sumario.col1Titulo}`;
+        document.getElementById('sumarioCol1Texto').innerHTML = dados.sumario.col1Texto;
+        document.getElementById('sumarioCol1Badge').textContent = dados.sumario.col1Badge;
+
+        document.getElementById('sumarioCol2Titulo').innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> ${dados.sumario.col2Titulo}`;
+        document.getElementById('sumarioCol2Texto').innerHTML = dados.sumario.col2Texto;
+        document.getElementById('sumarioCol2Badge').textContent = dados.sumario.col2Badge;
+
+        document.getElementById('sumarioCol3Titulo').innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> ${dados.sumario.col3Titulo}`;
+        document.getElementById('sumarioCol3Texto').innerHTML = dados.sumario.col3Texto;
+        document.getElementById('sumarioCol3Badge').textContent = dados.sumario.col3Badge;
+
+        // 4. Donut Central & Chips Laterais
+        document.getElementById('donutBigVal').textContent = dados.donutVal;
+        document.getElementById('donutValSub').textContent = dados.donutSub;
+        document.getElementById('donutValLabel').textContent = dados.donutLabel;
+
+        const cnt = dados.modulosCounts;
+        const pcts = dados.modulosPcts;
+        document.getElementById('statEstabilizadoCount').textContent = `${cnt.estabilizado} ${cnt.estabilizado === 1 ? 'módulo' : 'módulos'}`;
+        document.getElementById('statEstabilizadoPct').textContent = pcts.estabilizado;
+
+        document.getElementById('statImplantadoCount').textContent = `${cnt.implantado} ${cnt.implantado === 1 ? 'módulo' : 'módulos'}`;
+        document.getElementById('statImplantadoPct').textContent = pcts.implantado;
+
+        document.getElementById('statEmImplantacaoCount').textContent = `${cnt.emImplantacao} ${cnt.emImplantacao === 1 ? 'módulo' : 'módulos'}`;
+        document.getElementById('statEmImplantacaoPct').textContent = pcts.emImplantacao;
+
+        document.getElementById('statNaoIniciadoCount').textContent = `${cnt.naoIniciado} ${cnt.naoIniciado === 1 ? 'módulo' : 'módulos'}`;
+        document.getElementById('statNaoIniciadoPct').textContent = pcts.naoIniciado;
+
+        atualizarGraficoDonut(cnt);
+
+        // 5. Esteira dos Módulos
+        renderizarPipeline(dados.pipeline);
+
+        // 6. Matriz SWOT
+        renderizarSwot(dados.swot);
+
+        // 7. Demandas & Roadmap
+        renderizarDemandas(dados.demandas);
+        renderizarRoadmap(dados.roadmap);
+
+        if (animar) {
+          elementosAnimados.forEach(el => el.classList.remove('anim-updating'));
+        }
+      }, animar ? 140 : 0);
+    }
+
+    /* =====================================================
+       RENDERIZAÇÃO DA ESTEIRA DOS 12 MÓDULOS
+       ===================================================== */
+    function renderizarPipeline(pipeline) {
+      const container = document.getElementById('pipelineGrid');
+      container.innerHTML = '';
+
+      pipeline.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'pipeline-item';
+        if (item.statusClass === 'pill-nao-iniciado') {
+          div.style.borderLeft = '3px solid var(--vermelho-alert)';
+        } else if (item.statusClass === 'pill-estabilizado') {
+          div.style.borderLeft = '3px solid #1d4ed8';
+        }
+
+        div.innerHTML = `
+          <div>
+            <span class="pipeline-name">${item.nome}</span>
+            ${item.note ? `<span class="pipeline-meta-note">${item.note}</span>` : ''}
+          </div>
+          <span class="status-pill ${item.statusClass}">${item.status}</span>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    /* =====================================================
+       RENDERIZAÇÃO DA MATRIZ SWOT
+       ===================================================== */
+    function renderizarSwot(swot) {
+      // Strengths
+      const sContainer = document.getElementById('swotStrengthsTags');
+      sContainer.innerHTML = swot.strengthsTags.map(t => `<span class="chip-tag">${t}</span>`).join('');
+      document.getElementById('swotStrengthsComment').innerHTML = swot.strengthsComment;
+
+      // Weaknesses
+      const wContainer = document.getElementById('swotWeaknessesTags');
+      wContainer.innerHTML = swot.weaknessesTags.map(t => `<span class="chip-tag" style="color:var(--vermelho-alert);">${t}</span>`).join('');
+      document.getElementById('swotWeaknessesComment').innerHTML = swot.weaknessesComment;
+
+      // Opportunities
+      const oContainer = document.getElementById('swotOpportunitiesTags');
+      oContainer.innerHTML = swot.opportunitiesTags.map(t => `<span class="chip-tag">${t}</span>`).join('');
+      document.getElementById('swotOpportunitiesComment').innerHTML = swot.opportunitiesComment;
+
+      // Threats
+      const tContainer = document.getElementById('swotThreatsTags');
+      tContainer.innerHTML = swot.threatsTags.map(t => `<span class="chip-tag">${t}</span>`).join('');
+      document.getElementById('swotThreatsComment').innerHTML = swot.threatsComment;
+    }
+
+    /* =====================================================
+       RENDERIZAÇÃO DE DEMANDAS DE CLIENTES & ROADMAP
+       ===================================================== */
+    function renderizarDemandas(demandas) {
+      const container = document.getElementById('clientDemandasContainer');
+      container.innerHTML = '';
+
+      demandas.forEach(d => {
+        const div = document.createElement('div');
+        div.className = 'client-spec-card';
+        div.innerHTML = `
+          <div class="client-spec-top">
+            <span class="client-spec-title">${d.titulo}</span>
+            <span class="client-tag">${d.cliente}</span>
+          </div>
+          <p style="font-size:12px; color:#475569; line-height:1.5;">${d.desc}</p>
+          <div class="client-spec-meta">
+            <span>Prioridade: <strong style="color:var(--amarelo-warn);">${d.prio}</strong></span>
+            <span>Impacto: <strong style="color:var(--azul-corp);">${d.imp}</strong></span>
+            <span>Escopo: ${d.req}</span>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function renderizarRoadmap(roadmap) {
+      const container = document.getElementById('roadmapContainer');
+      container.innerHTML = '';
+
+      roadmap.forEach(r => {
+        const div = document.createElement('div');
+        div.className = `timeline-node ${r.done ? 'done' : ''}`;
+        div.innerHTML = `
+          <div class="node-title">${r.num}</div>
+          <div class="node-desc">${r.desc}</div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    /* =====================================================
+       INICIALIZAÇÃO & ATUALIZAÇÃO DO GRÁFICO DONUT (CHART.JS)
+       ===================================================== */
+    function inicializarGraficoDonut() {
       const ctx = document.getElementById('chartMaturidade');
       if (!ctx) return;
 
-      // Registrar plugin de rótulos de dados
       if (typeof ChartDataLabels !== 'undefined') {
         Chart.register(ChartDataLabels);
       }
 
-      // Dados reais do contrato Obra 61 (12 módulos):
-      // Estabilizado: 3 (25%)
-      // Implantado: 6 (50%)
-      // Em Implantação: 1 (8.3%)
-      // Não Iniciado: 2 (16.7%)
-      const totalModulos = 12;
+      const counts = BANCO_DE_DADOS.consolidado.modulosCounts;
 
-      new Chart(ctx, {
+      chartMaturidadeInstancia = new Chart(ctx, {
         type: 'doughnut',
         data: {
           labels: ['Estabilizado', 'Implantado', 'Em Implantação', 'Não Iniciado'],
           datasets: [{
-            data: [3, 6, 1, 2],
+            data: [counts.estabilizado, counts.implantado, counts.emImplantacao, counts.naoIniciado],
             backgroundColor: [
               '#1d4ed8', // Azul vibrante executivo
               '#0e633f', // Verde corporativo Plangecon
@@ -1909,12 +2360,16 @@
           responsive: true,
           maintainAspectRatio: false,
           cutout: '68%',
+          animation: {
+            duration: 550,
+            easing: 'easeOutQuart'
+          },
           layout: {
             padding: 10
           },
           plugins: {
             legend: {
-              display: false // Usamos os cards laterais de alta resolução
+              display: false
             },
             datalabels: {
               color: '#ffffff',
@@ -1924,15 +2379,15 @@
                 size: 11
               },
               formatter: function(value, context) {
-                // Exibe a quantidade e a porcentagem diretamente nas fatias
-                const pct = Math.round((value / totalModulos) * 100);
+                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                if (!total || value === 0) return '';
+                const pct = Math.round((value / total) * 100);
                 return `${value}\n(${pct}%)`;
               },
               textAlign: 'center',
               textShadowBlur: 4,
               textShadowColor: 'rgba(0, 0, 0, 0.45)',
               display: function(context) {
-                // Garante que mesmo a menor fatia (1) fique legível
                 return context.dataset.data[context.dataIndex] > 0;
               }
             },
@@ -1953,14 +2408,26 @@
               callbacks: {
                 label: function(context) {
                   const val = context.raw || 0;
-                  const pct = ((val / totalModulos) * 100).toFixed(1);
-                  return ` ${context.label}: ${val} módulos (${pct}%)`;
+                  const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                  const pct = ((val / total) * 100).toFixed(1);
+                  return ` ${context.label}: ${val} ${val === 1 ? 'módulo' : 'módulos'} (${pct}%)`;
                 }
               }
             }
           }
         }
       });
+    }
+
+    function atualizarGraficoDonut(counts) {
+      if (!chartMaturidadeInstancia) return;
+      chartMaturidadeInstancia.data.datasets[0].data = [
+        counts.estabilizado,
+        counts.implantado,
+        counts.emImplantacao,
+        counts.naoIniciado
+      ];
+      chartMaturidadeInstancia.update();
     }
   </script>
 
